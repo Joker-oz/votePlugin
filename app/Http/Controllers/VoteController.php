@@ -31,6 +31,8 @@ class VoteController extends Controller
         $vote = new Vote();
         $vote->fill($request->all());
         $vote->save();
+        $vote->qr_link = $vote->showQR($vote->id);
+        $vote->save();
         $num = 0;
         while (true) {
             $string = 'file'.$num;
@@ -52,16 +54,45 @@ class VoteController extends Controller
         }
 
         $voteInfo = $vote->where('id', $vote->id)->with('candidate')->first();
-        return view('', compact('voteInfo'));
+        return view('test', compact('voteInfo'));
     }
 
     /**
-     * 直播界面，单个投票信息展示界面
+     * 直播界面，游客投票信息展示界面
      * @method show
      * @param  Vote   $vote [description]
      * @return [type]       [description]
      */
-    public function show(Vote $vote)
+    public function show($vId)
     {
+        $voteInfo = Vote::where('id', $vId)->with('candidate')->first();
+
+        dd($voteInfo);
+    }
+
+    /**
+     * 游客投票动作
+     * @method addScore
+     * @param  [type]   $cId [description]
+     */
+    public function addScore($cId)
+    {
+        $candidate = Candidate::where('c_id', $cId)->first();
+        $candidate->increment('c_score', 1);
+
+        return  $candidate;
+    }
+
+    /**
+     * 无限发送数据
+     * @method sendScore
+     * @param  [type]    $vId [description]
+     * @return [type]         [description]
+     */
+    public function sendScore($vId)
+    {
+        $vote = Vote::where('id', $vId)->with('candidate')->first();
+        $candidate = $vote->candidate;
+        return $candidate;
     }
 }

@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use QrCode;
 
 class Vote extends Model
 {
     protected $table = 'v_info';
+
 
     /**
      * The attributes that are mass assignable.
@@ -25,5 +27,19 @@ class Vote extends Model
     public function candidate()
     {
         return $this->hasMany('App\Models\Candidate', 'v_id', 'id');
+    }
+
+    public function showQR($vid)
+    {
+        $adrress = '/pictures/'.str_random(10).'.png';
+        $qr = QrCode::format('png')
+            ->size(600)
+            ->margin(1)
+            ->merge(public_path().'/pictures/demo.jpg', .3, true)
+            ->encoding('UTF-8')
+            ->errorCorrection("H")
+            ->generate(config('app.url').'/vote/'.$vid.'/showing', public_path().$adrress);
+
+        return $adrress;
     }
 }

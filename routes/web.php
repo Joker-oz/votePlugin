@@ -21,5 +21,9 @@ Route::get('/index', 'StaticPagesController@show')->name('index');
 Route::get('/vote/edit', 'VoteController@index')->name('vote.edit');
 //投票存储动作
 Route::post('/vote/store', 'VoteController@store')->name('vote.store');
-//投票单个显示界面，直播界面
-Route::get('/vote/showing', 'VoteController@show')->name('vote.show');
+//游客投票单个显示界面，直播界面
+Route::get('/vote/{vId}/showing', 'VoteController@show')->name('vote.show');
+//游客点击投票显示界面
+Route::get('/vote/{cId}/add/score', 'VoteController@addScore')->name('vote.addSore');
+//无线返回候选者数据
+Route::get('/vote/{vId}/send/score', 'VoteController@addScore')->name('vote.sendSore');
