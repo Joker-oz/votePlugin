@@ -22,4 +22,8 @@ class Vote extends Model
      *
      * @var array
      */
+    public function candidate()
+    {
+        return $this->hasMany('App\Models\Candidate', 'v_id', 'id');
+    }
 }

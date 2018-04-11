@@ -17,8 +17,8 @@ class CreateVInfoTable extends Migration
             $table->increments('id');
             $table->string('title')->comment('投票的标题');
             $table->integer('object')->comment('投票对象 1->人 2->物');
-            $table->integer('status')->comment('投票的状态 1->进行中 0->结束');
-            $table->string('qr_link')->comment('二维码图片地址');
+            $table->integer('status')->default('1')->comment('投票的状态 1->进行中 0->结束');
+            $table->string('qr_link')->default('NULL')->comment('二维码图片地址');
             $table->timestamps();
         });
     }

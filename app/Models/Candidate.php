@@ -16,13 +16,20 @@ class Candidate extends Model
     protected $fillable = [
     'c_id', 'c_name', 'c_score', 'c_img'
     ];
+
+    protected $hidden = [
+     'v_id'
+    ];
     public $timestamps = false;
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-     'v_id'
-    ];
+
+
+    public function vote()
+    {
+        return $this->belongsTo('App\Models\Vote', 'id', 'v_id');
+    }
 }

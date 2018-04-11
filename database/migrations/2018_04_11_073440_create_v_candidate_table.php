@@ -16,9 +16,9 @@ class CreateVCandidateTable extends Migration
         Schema::create('v_candidate', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('v_id')->index()->comment('投票的编号');
-            $table->integer('c_id')->index()->comment('候选者的编号');
+            $table->string('c_id')->index()->comment('候选者的编号');
             $table->string('c_name')->comment('候选者姓名或者作品名');
-            $table->integer('c_score')->comment('当前票数');
+            $table->integer('c_score')->default('0')->comment('当前票数');
             $table->string('c_img')->comment('候选者图片地址');
         });
     }
