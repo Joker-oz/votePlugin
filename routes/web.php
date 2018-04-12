@@ -11,6 +11,10 @@
 |
 */
 
+// Route::get('/', function () {
+//   // return view('Puzzle.publicUse.login');
+//      return view('index');
+// });
 
 //登录界面
 Route::get('/', 'StaticPagesController@index')->name('login');
