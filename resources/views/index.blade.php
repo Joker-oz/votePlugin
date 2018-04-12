@@ -8,9 +8,22 @@
     <script src="/js/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/font/font-awesome.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <title>@yield('title', 投票系统)</title>
+    <title>@yield('title', '投票系统')</title>
   </head>
   <body>
-
+    @include('_head')
+    <div class="mid">
+      @include('_main')
+    </div>
   </body>
 </html>
+<style media="screen">
+  *{
+    -webkit-box-sizing: border-box;
+  }
+  .mid{
+    min-height: calc(100vh - 70px);
+    width: 100%;
+    background-color: rgba(198, 222, 238, 1);
+  }
+</style>

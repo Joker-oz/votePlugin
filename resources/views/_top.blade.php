@@ -1,7 +1,14 @@
-{{-- 主页 --}}
+{{-- 跳转后--}}
 <header>
   <div class="container">
     <div class="head">
+      <div class="mod-return">
+        <a href="#">
+          <button type="button" name="submit" class="log">
+            <i class="fa fa-undo fa-3x" aria-hidden="true"></i>
+          </button>
+        </a>
+      </div>
       <form  method="POST" class="logout">
         <button type="submit" name="submit" class="log">
           <span>退出</span>
@@ -20,6 +27,12 @@
 </header>
 
 <style media="screen">
+  .mod-return{
+      position: relative;
+      float:left;
+      left: 24px;
+      top: 16px;
+  }
   span{
     color: white;
     font-size: 15px;
@@ -73,6 +86,7 @@
   .log {
     background-color: inherit;
     border: none;
+    outline: inherit;
   }
   canvas{
     position: relative;

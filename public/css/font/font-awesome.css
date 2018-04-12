@@ -1024,6 +1024,7 @@
 
 .fa-rotate-left:before, .fa-undo:before {
   content: "\f0e2";
+  color: white;
 }
 
 .fa-legal:before, .fa-gavel:before {
