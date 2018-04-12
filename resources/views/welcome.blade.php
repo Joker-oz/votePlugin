@@ -10,5 +10,8 @@
   <input type="file" name="file{{$i}}" value="">
   <!-- 候选者资料需要数据结束 -->
   @endfor
+
+  投票时长（分钟）：
+  <input type="text" name="inputEndTime" value="0">
   <input type="submit" name="" value="发布">
 </form>

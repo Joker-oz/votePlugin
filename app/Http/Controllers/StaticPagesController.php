@@ -15,7 +15,7 @@ class StaticPagesController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('login');
     }
 
     /**
@@ -26,7 +26,6 @@ class StaticPagesController extends Controller
     public function show()
     {
         $votes = Vote::Orderby('created_at', 'desc')->get();
-        dd($votes);
-        return view('welcome', compact('votes'));
+        return view('index', compact('votes'));
     }
 }

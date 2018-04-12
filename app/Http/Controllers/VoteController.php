@@ -16,7 +16,7 @@ class VoteController extends Controller
      */
     public function index()
     {
-        return view('');
+        return view('create_vote');
     }
 
     /**
@@ -54,7 +54,7 @@ class VoteController extends Controller
         }
 
         $voteInfo = $vote->where('id', $vote->id)->with('candidate')->first();
-        return view('test', compact('voteInfo'));
+        return view('show', compact('voteInfo'));
     }
 
     /**
@@ -67,7 +67,7 @@ class VoteController extends Controller
     {
         $voteInfo = Vote::where('id', $vId)->with('candidate')->first();
 
-        dd($voteInfo);
+        return view('show', compact('voteInfo'));
     }
 
     /**
