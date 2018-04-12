@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vote;
 use App\Models\Candidate;
+use Auth;
+
+use Cache;
+use App\Http\Requests\LoginRequest;
 
 class StaticPagesController extends Controller
 {
@@ -15,7 +19,32 @@ class StaticPagesController extends Controller
      */
     public function index()
     {
-        return view('login');
+        // if (Cache::has('voteScore')) {
+        //     $data = Cache::store('voteScore')->get();
+        //     dd($data);
+        // }
+        // $id = 4;
+        // $vote = Vote::find(1)->candidateRedis($id);
+        return view('welcome');
+    }
+
+    /**
+     * 登录验证
+     * @method login
+     * @param  LoginRequest $request [description]
+     * @return [type]                [description]
+     */
+    public function login(LoginRequest $request)
+    {
+        $credentials = [
+        'uuid' => $request->account,
+        'password'=> $request->password,
+        ];
+        if (!Auth::attempt($credentials)) {
+            return Session('danger', '账号或者密码错误');
+        }
+
+        return redirect()->route('index');
     }
 
     /**

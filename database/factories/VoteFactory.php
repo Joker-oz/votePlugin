@@ -4,13 +4,14 @@ use Faker\Generator as Faker;
 use Carbon\Carbon;
 
 $factory->define(App\Models\Vote::class, function (Faker $faker) {
-    $now = Carbon::now()->toDateTimeString();
+    $beginTime = Carbon::now()->toDateTimeString();
+    $endTime = Carbon::now()->addMinutes(random_int(0, 10))->toDateTimeString();
     return [
         'title' => str_random(10),
         'object' => random_int(1, 2),
         'status' => random_int(0, 1),
         'qr_link' => 'null',
-        'created_at' => $now,
-        'updated_at' => $now,
+        'created_at' => $beginTime,
+        'updated_at' => $endTime,
     ];
 });

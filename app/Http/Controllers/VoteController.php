@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Handlers\ImageUploadHandler;
 use App\Models\Vote;
 use App\Models\Candidate;
+use Cookie;
 
 class VoteController extends Controller
 {
@@ -75,12 +76,17 @@ class VoteController extends Controller
      * @method addScore
      * @param  [type]   $cId [description]
      */
-    public function addScore($cId)
+    public function addScore($cId, Request $request)
     {
-        $candidate = Candidate::where('c_id', $cId)->first();
-        $candidate->increment('c_score', 1);
-
-        return  $candidate;
+        // dd(Cookie::get('userInfo'));
+        if (empty(Cookie::get('userInfo'))) {
+            $userInfo = array('cid' => $cId, 'uuid' => $request->check);
+            Cookie::queue('userInfo', $userInfo, 10);
+            $candidate = Candidate::where('c_id', $cId)->first();
+            $candidate->increment('c_score', 1);
+            return  $candidate;
+        }
+        return Session('danger', '只能投1次');
     }
 
     /**

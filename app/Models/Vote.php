@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use QrCode;
+use Carbon\Carbon;
 
 class Vote extends Model
 {
@@ -41,5 +42,20 @@ class Vote extends Model
             ->generate(config('app.url').'/vote/'.$vid.'/showing', public_path().$adrress);
 
         return $adrress;
+    }
+
+    /**
+     * 缓存当前投票候选人的分数
+     * @method candidateRedis
+     * @param  [type]         $v_id [description]
+     * @return boolean              [description]
+     */
+    public function candidateRedis($v_id)
+    {
+        $vote = Vote::where('id', $v_id)->with('candidate')->first();
+        $minute=floor((strtotime($vote->updated_at)-strtotime($vote->created_at))%86400/60);
+        foreach ($vote->candidate as $key => $value) {
+            Cache::store('voteScore')->add($value->c_id, $value->score, $minute);
+        }
     }
 }

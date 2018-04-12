@@ -18,8 +18,11 @@
 
 //登录界面
 Route::get('/', 'StaticPagesController@index')->name('login');
+//登录验证
+Route::post('/adas', 'StaticPagesController@login')->name('login.verify');
 //首页
 Route::get('/index', 'StaticPagesController@show')->name('index');
+
 
 //投票编辑界面
 Route::get('/vote/edit', 'VoteController@index')->name('vote.edit');
