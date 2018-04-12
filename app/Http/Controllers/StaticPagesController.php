@@ -19,13 +19,7 @@ class StaticPagesController extends Controller
      */
     public function index()
     {
-        // if (Cache::has('voteScore')) {
-        //     $data = Cache::store('voteScore')->get();
-        //     dd($data);
-        // }
-        // $id = 4;
-        // $vote = Vote::find(1)->candidateRedis($id);
-        return view('welcome');
+        return view('index');
     }
 
     /**

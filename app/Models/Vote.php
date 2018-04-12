@@ -54,8 +54,11 @@ class Vote extends Model
     {
         $vote = Vote::where('id', $v_id)->with('candidate')->first();
         $minute=floor((strtotime($vote->updated_at)-strtotime($vote->created_at))%86400/60);
+        \Cache::add('vote', 'woring', $minute);
         foreach ($vote->candidate as $key => $value) {
-            Cache::store('voteScore')->add($value->c_id, $value->score, $minute);
+            $key = (string)$value->c_id;
+            $score = (string)$value->c_score;
+            \Cache::add($key, $score, $minute);
         }
     }
 }
