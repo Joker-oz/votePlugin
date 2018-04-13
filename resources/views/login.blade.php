@@ -10,7 +10,7 @@
 </div>
 
 <div class="gra-md-form">
-  <form method="post" action="{{url('')}}/adas">
+  <form method="post" action="{{url('')}}/login">
     {{ csrf_field() }}
     <table border="1" cellspacing="0" width="400" height="100">
       <tr>

@@ -1,24 +1,24 @@
 @extends('defaultone')
 @include('_top')
-@section('title', '人物')
+@section('title', '作品')
 @section('content')
 <div class="main">
 <div class="middle">
 	<div class="choose">
-	<button class="choose" id="choose1" ><span class="choose" id="choose1">作品投票</span></button></a>
-	<button class="choose" id="choose2"><span class="choose" id="choose2">人物投票</span></button>
+  <button class="choose" id="choose1"><span class="choose" id="choose1" id="person" onClick="location.href='create_vote'">人物投票</span></button></a>
+	<button class="choose" id="choose2" ><span class="choose" id="choose2">作品投票</span></button>
 	</div>
     <form method="post" enctype="multipart/form-data" action="{{ route('vote.store')}}" class="mod-pic">
       {{ csrf_field() }}
       <div class="title">
         <input type="text" name="title" value="" placeholder="标题">
-        <input type="hidden" name="object" value="2">
+        <input type="hidden" name="object" value="1">
         <label id="timeout">结束时间:(min)</label>
         <input type="text" name="inputEndTime" value="0" id="time" placeholder="结束时间">
       </div>
   @for ($i=0; $i < 2; $i++)
     <label id="name">姓名：</label>
-			<input type="text" name="c_name{{$i}}" id="title" placeholder="请输入人名..." >
+			<input type="text" name="c_name{{$i}}" id="title" placeholder="请输入作品名" >
       <input type="file" name="file{{$i}}" value="" id="image">
       <hr>
   @endfor
@@ -171,5 +171,8 @@ span#file{
 	left: 20%;
 	color: #fff;
 }
-
 </style>
+<script src="/js/jquery.js"></script>
+<script type="text/javascript">
+  var change = getElementById.getContext
+</script>

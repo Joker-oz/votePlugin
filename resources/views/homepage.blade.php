@@ -1,17 +1,17 @@
 <div class="blade">
 <div class="choose">
+  @foreach ($votes as $votes)
     <li>
       <span id="title">
-        <a href="#" style="color: black">
-          456456
+        <a href="{{ url('/vote/$votes->id/showing') }}" style="color: black">
+          {{ $votes->title }}
         </a>
       </span>
         <form class="mod-dieth" action="" method="post">
-          <button type="submit" name="button" id="out" class="button medium square red">
-            <span id="end">结束</span>
-          </button>
+          <input type="submit" name="vId" value="结束" class="button medium square red">
         </form>
     </li>
+    @endforeach
 </div>
 </div>
 <style media="screen">
@@ -25,6 +25,7 @@ a:link {
     position: relative;
   }
   li {
+    height: 39px;
     list-style: none;
     border-bottom: 2px solid white;
   }
@@ -38,9 +39,10 @@ a:link {
   }
   .mod-dieth {
     position: relative;
-    float: right;
+    /* float: right; */
     width: 13%;
-    top: 1px;
+    bottom: 30px;
+    left: 87%;
   }
   #out {
     display: inline-block;

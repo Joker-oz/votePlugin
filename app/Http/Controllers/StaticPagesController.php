@@ -51,4 +51,11 @@ class StaticPagesController extends Controller
         $votes = Vote::Orderby('created_at', 'desc')->get();
         return view('index', compact('votes'));
     }
+
+    //退出登陆
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }

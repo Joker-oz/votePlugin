@@ -3,7 +3,7 @@
   <div class="container">
     <div class="head">
       <div class="mod-return">
-        <a href="#">
+        <a href="javascript:history.go(-1)">
           <button type="button" name="submit" class="log">
             <i class="fa fa-undo fa-3x" aria-hidden="true"></i>
           </button>
@@ -18,7 +18,7 @@
       </form>
       <canvas id="line" width="6px" height="40px"></canvas>
     <div class="mod-make">
-      <a href="#">
+      <a href="{{ url('/vote/edit') }}">
         <button type="button" name="submit" class="log">
           <span>创建投票</span>
         </button>
