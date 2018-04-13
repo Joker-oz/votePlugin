@@ -28,7 +28,13 @@
 </form>
 
 <br>
+<form class="" action="{{ route('logout') }}" method="post">
+  {{ csrf_field() }}
+  {{ method_field('DELETE') }}
+  <input type="submit" name="" value="提交">
+</form>
 <br>
+
 @if(\Cache::has('vote'))
   {{ \Cache::get('vote') }}
 @endif
