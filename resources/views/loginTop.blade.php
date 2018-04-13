@@ -1,40 +1,13 @@
-{{-- 跳转后--}}
+{{-- 登陆 --}}
 <header>
   <div class="container">
     <div class="head">
-      <div class="mod-return">
-        <a href="#">
-          <button type="button" name="submit" class="log">
-            <i class="fa fa-undo fa-3x" aria-hidden="true"></i>
-          </button>
-        </a>
-      </div>
-      <form action="{{ route('logout') }}"  method="POST" class="logout">
-          {{ csrf_field() }}
-          {{ method_field('DELETE') }}
-        <button type="submit" name="submit" class="log">
-          <span>退出</span>
-        </button>
-      </form>
-      <canvas id="line" width="6px" height="40px"></canvas>
-    <div class="mod-make">
-      <a href="#">
-        <button type="button" name="submit" class="log">
-          <span>创建投票</span>
-        </button>
-      </a>
-    </div>
+
   </div>
   </div>
 </header>
 
 <style media="screen">
-  .mod-return{
-      position: relative;
-      float:left;
-      left: 24px;
-      top: 16px;
-  }
   span{
     color: white;
     font-size: 15px;
@@ -88,7 +61,6 @@
   .log {
     background-color: inherit;
     border: none;
-    outline: inherit;
   }
   canvas{
     position: relative;

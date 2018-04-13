@@ -1,6 +1,5 @@
-
   <div class="main">
-    @include('homePage')
+    @include('homepage')
   </div>
   <style media="screen">
   .main{
@@ -9,7 +8,7 @@
     left: 360px;
     /* margin-left: 25%; */
     /* margin-right: 30%; */
-    top: 15%;
+    top: 19%;
     height: 80%;
     width: 50%;
     background: inherit;

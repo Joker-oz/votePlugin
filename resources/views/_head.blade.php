@@ -9,7 +9,7 @@
       </form>
       <canvas id="line" width="6px" height="40px"></canvas>
     <div class="mod-make">
-      <a href="#">
+      <a href="{{ url('/vote/edit') }}">
         <button type="button" name="submit" class="log">
           <span>创建投票</span>
         </button>
