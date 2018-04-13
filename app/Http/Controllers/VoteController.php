@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Handlers\ImageUploadHandler;
 use App\Models\Vote;
 use App\Models\Candidate;
+use Carbon\Carbon;
 use Cookie;
 
 class VoteController extends Controller
@@ -21,6 +22,16 @@ class VoteController extends Controller
     }
 
     /**
+     * 加载创建投票的编辑界面
+     * @method index
+     * @return [type] [description]
+     */
+    public function index()
+    {
+        return view('createVote');
+    }
+
+    /**
      * 储存投票中的信息
      * @method store
      * @param  Request $request [description]
@@ -33,6 +44,8 @@ class VoteController extends Controller
         $vote->fill($request->all());
         $vote->save();
         $vote->qr_link = $vote->showQR($vote->id);
+        $vote->created_at = Carbon::now();
+        $vote->updated_at = Carbon::now()->addMinutes($request->inputEndTime);
         $vote->save();
         $num = 0;
         while (true) {
@@ -56,6 +69,13 @@ class VoteController extends Controller
 
         $voteInfo = $vote->where('id', $vote->id)->with('candidate')->first();
         return view('show', compact('voteInfo'));
+    }
+
+    public function endVote(Request $request)
+    {
+        $vote = Vote::where('id', $request->vId)->first();
+        $vote->status = 0;
+        $vote->save();
     }
 
     /**
