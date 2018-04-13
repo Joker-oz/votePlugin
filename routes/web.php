@@ -31,7 +31,7 @@ Route::post('/vote/over', 'VoteController@endVote')->name('vote.end');
 //投票编辑界面
 Route::get('/vote/edit', 'VoteController@index')->name('vote.edit');
 //对象为作品
-Route::get('/vote/add/', 'VoteController@addSthing')->name('vote.sthing');
+Route::get('/vote/add/', 'VoteController@addthing')->name('vote.thing');
 //投票存储动作
 Route::post('/vote/store', 'VoteController@store')->name('vote.store');
 //游客投票单个显示界面，直播界面

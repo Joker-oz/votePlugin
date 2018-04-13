@@ -48,7 +48,7 @@ class StaticPagesController extends Controller
      */
     public function show()
     {
-        $votes = Vote::Orderby('created_at', 'desc')->get();
+        $votes = Vote::Orderby('created_at', 'desc')->paginate(10);
         return view('index', compact('votes'));
     }
 
