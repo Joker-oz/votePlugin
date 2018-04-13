@@ -5,10 +5,10 @@
 <div class="main">
 <div class="middle">
 	<div class="choose">
-	<button class="choose" id="choose1" ><span class="choose" id="choose1">作品投票</span></button></a>
+	<a href="{{url('')}}/vote/add/"><button class="choose" id="choose1" ><span class="choose" id="choose1">作品投票</span></button></a>
 	<button class="choose" id="choose2"><span class="choose" id="choose2">人物投票</span></button>
 	</div>
-    <form method="post" enctype="multipart/form-data" action="{{ route('vote.store')}}" class="mod-pic">
+    <form method="post" enctype="multipart/form-data" action="{{ route('vote.thing')}}" class="mod-pic">
       {{ csrf_field() }}
       <div class="title">
         <input type="text" name="title" value="" placeholder="标题">

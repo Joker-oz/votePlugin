@@ -3,12 +3,14 @@
   @foreach ($votes as $votes)
     <li>
       <span id="title">
-        <a href="{{ url('/vote/$votes->id/showing') }}" style="color: black">
+        <a href="{{ route('vote.show', $votes->id)  }}" style="color: black">
           {{ $votes->title }}
         </a>
       </span>
-        <form class="mod-dieth" action="" method="post">
-          <input type="submit" name="vId" value="结束" class="button medium square red">
+        <form class="mod-dieth" action="{{url('')}}/vote/over" method="post">
+          {{ csrf_field() }}
+          <input type="hidden" name="vId" value="{{$votes->id}}">
+          <input type="submit" name="" value="结束" class="button medium square red">
         </form>
     </li>
     @endforeach

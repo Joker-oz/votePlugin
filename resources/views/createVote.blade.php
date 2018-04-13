@@ -5,7 +5,7 @@
 <div class="main">
 <div class="middle">
 	<div class="choose">
-  <button class="choose" id="choose1"><span class="choose" id="choose1" id="person" onClick="location.href='create_vote'">人物投票</span></button></a>
+  <a href="{{url('')}}/vote/edit"><button class="choose" id="choose1"><span class="choose" id="choose1" id="person">人物投票</span></button></a>
 	<button class="choose" id="choose2" ><span class="choose" id="choose2">作品投票</span></button>
 	</div>
     <form method="post" enctype="multipart/form-data" action="{{ route('vote.store')}}" class="mod-pic">
