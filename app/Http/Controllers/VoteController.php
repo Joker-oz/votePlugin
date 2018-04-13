@@ -26,7 +26,7 @@ class VoteController extends Controller
      * @method index
      * @return [type] [description]
      */
-    public function addSthing()
+    public function addThing()
     {
         return view('createVote');
     }
