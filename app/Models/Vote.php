@@ -39,7 +39,7 @@ class Vote extends Model
             ->merge(public_path().'/pictures/demo.jpg', .3, true)
             ->encoding('UTF-8')
             ->errorCorrection("H")
-            ->generate(config('app.url').'/vote/'.$vid.'/showing', public_path().$adrress);
+            ->generate(config('app.url').'/vote/'.$vid.'/show', public_path().$adrress);
 
         return $adrress;
     }

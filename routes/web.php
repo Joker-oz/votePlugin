@@ -34,8 +34,10 @@ Route::get('/vote/edit', 'VoteController@index')->name('vote.edit');
 Route::get('/vote/add/', 'VoteController@addthing')->name('vote.thing');
 //投票存储动作
 Route::post('/vote/store', 'VoteController@store')->name('vote.store');
-//游客投票单个显示界面，直播界面
+//直播界面
 Route::get('/vote/{vId}/showing', 'VoteController@show')->name('vote.show');
+//游客投票单个显示界面，
+Route::get('/vote/{vId}/show', 'VoteController@showToOther')->name('vote.showTo');
 //游客点击投票显示界面
 Route::get('/vote/{cId}/add/score', 'VoteController@addScore')->name('vote.addSore');
 //无线返回候选者数据
