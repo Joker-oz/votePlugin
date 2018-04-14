@@ -4,7 +4,7 @@
 @section('content')
   <div class="main">
     <div class="mod-show-table">
-      <canvas id="chart"></canvas>
+      <canvas id="my_chart"></canvas>
     </div>
   </div>
   <div class="right">
@@ -46,42 +46,57 @@
   }
   </style>
   <script type="text/javascript">
-  $.get('/vote/{{ $voteInfo->id }}/showing',function (data, status) {
-    var data = {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-      datasets: [{
-        label: "Dataset #1",
-        backgroundColor: "rgba(255,99,132,0.2)",
-        borderColor: "rgba(255,99,132,1)",
-        borderWidth: 2,
-        hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        hoverBorderColor: "rgba(255,99,132,1)",
-        data: [65, 59, 20, 81, 56, 55, 40],
-      }]
-    };
+  $.get('/vote/{{$voteInfo->id}}/showing',function (data, status) {
+    var test = [for (var i = 0; i < $voteInfo->candidate[$voteInfo->c_name]->c_name.length; i++) {
+                result.push("{{ $voteInfo->candidate[$voteInfo->c_name]->c_name }}")
+                }
+               ];
 
-    var options = {
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          stacked: true,
-          gridLines: {
-            display: true,
-            color: "rgba(255,99,132,0.2)"
-          }
-        }],
-        xAxes: [{
-          gridLines: {
-            display: false
-          }
-        }]
-      }
-    };
+    var data = {};
+    var name = "datasets";
+    var namaes = "labels";
+    var nnn = "data";
+    var datass = [
+                  {{ $voteInfo->candidate[0]->c_score}},
+                  {{ $voteInfo->candidate[1]->c_score}},
+                  {{ $voteInfo->candidate[0]->c_score}}
+                 ];
+    var dsfg = [{
+                label: "Dataset #1",
+                backgroundColor: "rgba(255,99,132,0.2)",
+                borderColor: "rgba(255,99,132,1)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                hoverBorderColor: "rgba(255,99,132,1)",
+              }];
 
-    Chart.Bar('chart', {
-      options: options,
-      data: data
-    });
-  })
+    dsfg[0].data = datass;
+    data[name] = dsfg;
+    data[namaes] = test
+  var ctx = document.getElementById("my_chart").getContext("2d");
+        var my_chart = new Chart(ctx,{
+          type: 'pie',
+          data: {
+            labels: [
+              "首页文章列表",
+              "分类文章列表",
+              "文章详情",
+              "关于我",
+            ],
+            datasets: [{
+              data: data,
+              backgroundColor: [
+                window.chartColors.red,
+                window.chartColors.orange,
+                window.chartColors.purple,
+                window.chartColors.green,
+              ],
+            }]
+          },
+          options: {
+            responsive: true,
+          }
+        });
+  });
   </script>
 @stop

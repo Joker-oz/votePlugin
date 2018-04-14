@@ -7,11 +7,15 @@
           {{ $vote->title }}
         </a>
       </span>
+      @if ($vote->status == 1)
         <form class="mod-dieth" action="{{url('')}}/vote/over" method="post">
           {{ csrf_field() }}
           <input type="hidden" name="vId" value="{{$vote->id}}">
-          <input type="submit" name="" value="结束" class="button medium square red">
+          <input type="submit" name="" value="结束" class="button medium square red" onclick="custom_close()">
         </form>
+      @else
+        <span id="endding">已结束</span>
+      @endif
     </li>
     @endforeach
 </div>
@@ -19,6 +23,15 @@
 </div>
 {{ $votes->links() }}
 <style media="screen">
+#endding{
+  position: relative;
+  float: right;
+  right: 29px;
+  color: red;
+  font-size: 22px;
+  font-family: Micsorft-YAHEI;
+  font-weight: 700;
+}
 ul {
   position: relative;
   width: 100%;
@@ -218,3 +231,14 @@ a:link {
   }
 
 </style>
+<script type="text/javascript">
+  function custom_close() {
+    if(confirm("您确定要结束吗？")){
+      window.opener=null;
+      window.open('','_self');
+      window.close
+    }
+    else {
+    }
+  }
+</script>
