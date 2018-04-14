@@ -11,6 +11,11 @@ use Cookie;
 
 class VoteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show', 'addScore']]);
+    }
+
     /**
      * 加载创建投票的编辑界面
      * @method index
