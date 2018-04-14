@@ -41,4 +41,4 @@ Route::get('/vote/{vId}/show', 'VoteController@showToOther')->name('vote.showTo'
 //游客点击投票显示界面
 Route::get('/vote/{cId}/add/score', 'VoteController@addScore')->name('vote.addSore');
 //无线返回候选者数据
-Route::get('/vote/{vId}/send/score', 'VoteController@addScore')->name('vote.sendSore');
+Route::get('/vote/{vId}/send/score', 'VoteController@sendScore')->name('vote.sendSore');
