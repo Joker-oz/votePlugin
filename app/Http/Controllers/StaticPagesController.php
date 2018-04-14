@@ -14,7 +14,7 @@ class StaticPagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index', 'login']]);
     }
     /**
      * 管理员登录界面
