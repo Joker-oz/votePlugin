@@ -1,22 +1,128 @@
 <div class="blade">
 <div class="choose">
-  @foreach ($votes as $votes)
-    <li>
+  @foreach ($votes as $vote)
+    <li id="ll">
       <span id="title">
-        <a href="{{ route('vote.show', $votes->id)  }}" style="color: black">
-          {{ $votes->title }}
+        <a href="{{ route('vote.show', $vote->id)  }}" style="color: black">
+          {{ $vote->title }}
         </a>
       </span>
         <form class="mod-dieth" action="{{url('')}}/vote/over" method="post">
           {{ csrf_field() }}
-          <input type="hidden" name="vId" value="{{$votes->id}}">
+          <input type="hidden" name="vId" value="{{$vote->id}}">
           <input type="submit" name="" value="结束" class="button medium square red">
         </form>
     </li>
     @endforeach
 </div>
+
 </div>
+{{ $votes->links() }}
 <style media="screen">
+ul {
+  position: relative;
+  width: 100%;
+  top: 134px;
+  text-align: center;
+
+}
+
+ul> {
+  width: 45rem;
+}
+
+
+ul>li {
+  list-style: none;
+  display: inline;
+  padding-left: 0px;
+}
+
+/* ul> li {
+  counter-increment: pagination;
+} */
+ul> li:hover a {
+  color: #fdfdfd;
+  background-color: #1d1f20;
+  border: solid 1px #1d1f20;
+}
+ul> li.active a {
+  color: #fdfdfd;
+  background-color: #1d1f20;
+  border: solid 1px #1d1f20;
+}
+
+ul> li:first-child a:after {
+  content: "<";
+}
+
+/* ul> li:nth-child(2) {
+  counter-reset: pagination;
+} */
+
+ul> li:last-child a:after {
+  content: ">";
+}
+ul> li a {
+  border: solid 1px #d6d6d6;
+  border-radius: 0.2rem;
+  color: #7d7d7d;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem 0.9rem;
+}
+/* ul> li a:after {
+  content: " " counter(pagination) " ";
+} */
+
+ul> li a {
+  display: none;
+}
+ul> li:first-child a {
+  display: inline-block;
+}
+ul> li:first-child a:after {
+  content: "<";
+}
+ul> li:nth-child(2) a {
+  display: inline-block;
+}
+ul> li:nth-child(3) a {
+  display: inline-block;
+}
+ul> li:nth-child(4) a {
+  display: inline-block;
+}
+ul> li:nth-child(5) a {
+  display: inline-block;
+}
+ul> li:nth-child(6) a {
+  display: inline-block;
+}
+ul> li:nth-child(7) a {
+  display: inline-block;
+}
+ul> li:nth-child(8) a {
+  display: inline-block;
+}
+ul> li:last-child a {
+  display: inline-block;
+}
+ul> li:last-child a:after {
+  content: ">";
+}
+ul> li:nth-last-child(2) a {
+  display: inline-block;
+}
+ul> li:nth-last-child(3) {
+  display: inline-block;
+}
+ul> li:nth-last-child(3):after {
+  padding: 0 1rem;
+  content: "...";
+}
 a{
   text-decoration: blink ;
 }
@@ -26,12 +132,12 @@ a:link {
   .blade {
     position: relative;
   }
-  li {
+  #ll {
     height: 39px;
     list-style: none;
     border-bottom: 2px solid white;
   }
-  li #title{
+  #ll #title{
     position: relative;
     font-size: 27px;
     color: black;

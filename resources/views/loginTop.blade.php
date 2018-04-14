@@ -62,12 +62,6 @@
     background-color: inherit;
     border: none;
   }
-  canvas{
-    position: relative;
-    float: right;
-    right: 77px;
-    top: 13px;
-  }
 </style>
 <script type="text/javascript">
   var a = document.getElementById("line");

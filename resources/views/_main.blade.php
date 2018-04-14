@@ -1,5 +1,5 @@
   <div class="main">
-    @include('homepage')
+    @include('homepage', ['votes' => $votes])
   </div>
   <style media="screen">
   .main{

@@ -3,7 +3,7 @@
   <div class="container">
     <div class="head">
       <div class="mod-return">
-        <a href="javascript:history.go(-1)">
+        <a href="{{url('')}}/index">
           <button type="button" name="submit" class="log">
             <i class="fa fa-undo fa-3x" aria-hidden="true"></i>
           </button>
@@ -90,7 +90,7 @@
     border: none;
     outline: inherit;
   }
-  canvas{
+  #line{
     position: relative;
     float: right;
     right: 77px;

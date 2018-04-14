@@ -4,14 +4,15 @@
 @section('content')
 <div class="main">
 <div class="middle">
-	<div class="choose">
-	<a href="{{url('')}}/vote/add/"><button class="choose" id="choose1" ><span class="choose" id="choose1">作品投票</span></button></a>
-	<button class="choose" id="choose2"><span class="choose" id="choose2">人物投票</span></button>
+	<div class="choose"><button class="choose" id="choose1" ><span class="choose" id="choose1">人物投票</span></button>
+	<a href="{{url('')}}/vote/add/">
+	<button class="choose" id="choose2"><span class="choose" id="choose2">作品投票</span></button>
+  </a>
 	</div>
-    <form method="post" enctype="multipart/form-data" action="{{ route('vote.thing')}}" class="mod-pic">
+    <form method="post" enctype="multipart/form-data" action="{{ route('vote.store')}}" class="mod-pic">
       {{ csrf_field() }}
       <div class="title">
-        <input type="text" name="title" value="" placeholder="标题">
+        <input type="text" name="title" value="" placeholder="标题" id="tit">
         <input type="hidden" name="object" value="2">
         <label id="timeout">结束时间:(min)</label>
         <input type="text" name="inputEndTime" value="0" id="time" placeholder="结束时间">
@@ -30,10 +31,19 @@
 </div>
 @stop
 <style>
+.title #tit {
+	left: 74px;
+	position: relative;
+	border-radius: 5px;
+	border: 0;
+	height: 33px;
+	width: 207px;
+}
 #timeout {
-  position: relative;
-  left: 227px;
-  font-size: 13px;
+	position: relative;
+	left: 206px;
+	top: -6px;
+	font-size: 13px;
 }
 #time{
   float: right;

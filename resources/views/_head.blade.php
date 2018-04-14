@@ -74,7 +74,7 @@
     background-color: inherit;
     border: none;
   }
-  canvas{
+  #line{
     position: relative;
     float: right;
     right: 77px;
