@@ -47,49 +47,41 @@
   </style>
   <script type="text/javascript">
   $.get('/vote/{{ $voteInfo->id }}/showing',function (data, status) {
-  var data;
-  var candidate;
-  var databa;
-  @foreach ($voteInfo->candidate as $key => $value) use(var candidate, var databa)
-  candidate[$key] = $value->c_name;
-  databa[$key] = $value->c_score;
-  @endforeach
-    data['label'] = candidate;
-    data['data'] = databa;
-    data = {
-    datasets: [{
-      label: "Dataset #1",
-      backgroundColor: "rgba(255,99,132,0.2)",
-      borderColor: "rgba(255,99,132,1)",
-      borderWidth: 2,
-      hoverBackgroundColor: "rgba(255,99,132,0.4)",
-      hoverBorderColor: "rgba(255,99,132,1)",
-    }]
-  };
-
-
-  var options = {
-    maintainAspectRatio: false,
-    scales: {
-      yAxes: [{
-        stacked: true,
-        gridLines: {
-          display: true,
-          color: "rgba(255,99,132,0.2)"
-        }
-      }],
-      xAxes: [{
-        gridLines: {
-          display: false
-        }
+    var data = {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      datasets: [{
+        label: "Dataset #1",
+        backgroundColor: "rgba(255,99,132,0.2)",
+        borderColor: "rgba(255,99,132,1)",
+        borderWidth: 2,
+        hoverBackgroundColor: "rgba(255,99,132,0.4)",
+        hoverBorderColor: "rgba(255,99,132,1)",
+        data: [65, 59, 20, 81, 56, 55, 40],
       }]
-    }
-  };
+    };
 
-  Chart.Bar('chart', {
-    options: options,
-    data: data
-  });
-});
+    var options = {
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          stacked: true,
+          gridLines: {
+            display: true,
+            color: "rgba(255,99,132,0.2)"
+          }
+        }],
+        xAxes: [{
+          gridLines: {
+            display: false
+          }
+        }]
+      }
+    };
+
+    Chart.Bar('chart', {
+      options: options,
+      data: data
+    });
+  })
   </script>
 @stop
