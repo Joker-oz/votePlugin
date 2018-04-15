@@ -9,15 +9,18 @@
 	<button class="choose" id="choose2"><span class="choose" id="choose2">作品投票</span></button>
   </a>
 	</div>
+	<br>
     <form method="post" enctype="multipart/form-data" action="{{ route('vote.store')}}" class="mod-pic">
       {{ csrf_field() }}
       <div class="title">
         <input type="text" name="title" value="" placeholder="标题" id="tit">
         <input type="hidden" name="object" value="2">
+				<span id="person">最少输入2个人</span>
         <label id="timeout">结束时间:(min)</label>
         <input type="text" name="inputEndTime" value="0" id="time" placeholder="结束时间">
       </div>
-  @for ($i=0; $i < 2; $i++)
+				<br>
+  @for ($i=0; $i < 10; $i++)
     <label id="name">姓名：</label>
 			<input type="text" name="c_name{{$i}}" id="title" placeholder="请输入人名..." >
       <input type="file" name="file{{$i}}" value="" id="image">
@@ -31,8 +34,17 @@
 </div>
 @stop
 <style>
+#person {
+	color: black;
+	right: 245px;
+	/* top: 150px; */
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 700;
+	position: relative;
+	}
 .title #tit {
-	left: 74px;
+	left: 128px;
 	position: relative;
 	border-radius: 5px;
 	border: 0;
@@ -41,14 +53,15 @@
 }
 #timeout {
 	position: relative;
-	left: 206px;
+	left: 129px;
 	top: -6px;
 	font-size: 13px;
 }
 #time{
-  float: right;
+	top: -5px;
+	left: 132px;
+	position: relative;
   width: 53px;
-
 }
 .main{
   border-width: 0px;
