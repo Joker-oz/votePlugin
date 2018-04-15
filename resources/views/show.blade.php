@@ -9,7 +9,7 @@
         {{ csrf_field() }}
         <canvas id="chart"></canvas>
         <input type="hidden" name="vId" value="{{ $voteInfo->id }}">
-        <input type="submit" name="" value="结束" id="endTime">
+        <input type="submit" name="" value="结束" id="endTime" style="position: relative;left: 100%;  top: -23px;width: 104px;color: inherit;border: 0;background-color: #3737d987;border-radius: 6px;">
       </form>
     </div>
   </div>
