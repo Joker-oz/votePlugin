@@ -172,7 +172,7 @@
     });
 
    function longPolling() {
-      if (endTime-times <= 0) {
+      if (times-endTimes <= 0) {
         clearInterval(interval);
       }
        $.ajax({
@@ -180,9 +180,7 @@
          type:"get",
          dataType: "json",
          headers: {
-
            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-
          },
          timeout: 50000,//5秒超时，可自定义设置
          error: function (XMLHttpRequest, textStatus, errorThrown) {
