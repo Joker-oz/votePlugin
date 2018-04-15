@@ -30,6 +30,6 @@ class Candidate extends Model
 
     public function vote()
     {
-        return $this->belongsTo('App\Models\Vote', 'id', 'v_id');
+        return $this->belongsTo('App\Models\Vote', 'v_id', 'id');
     }
 }

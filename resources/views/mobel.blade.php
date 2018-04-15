@@ -12,7 +12,7 @@
           <span id="topic">请选择自己心仪的并投票</span>
       </div>
     </div>
-    <form class="" action="/vote/add/score" method="get">
+    <form class="" action="{{url('')}}/vote/add/score" method="get">
     <div class="box">
       @foreach ($voteInfo->candidate as $voteInfo)
         <img src="{{ $voteInfo->c_img }}" alt="" style="height: 100%;width: 100%;">
@@ -26,7 +26,8 @@
    </div>
       @endforeach
     </div>
-         <button type="button" class="button blue" onClick="submitvote(this)">投票</button>
+         <!-- <button type="button" class="button blue" onClick="submitvote(this)">投票</button> -->
+         <input type="submit" name="" value="提交" class="button blue">
     </form>
     </div>
   </body>

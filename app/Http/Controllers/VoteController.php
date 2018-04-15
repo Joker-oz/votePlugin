@@ -122,16 +122,23 @@ class VoteController extends Controller
      * @method addScore
      * @param  [type]   $cId [description]
      */
-    public function addScore($cId, Request $request)
+    public function addScore(Request $request)
     {
         // dd(Cookie::get('userInfo'));
-        if (empty(Cookie::get('userInfo'))) {
-            $userInfo = array('cid' => $cId, 'uuid' => $request->check);
+        $message = Cookie::get('userInfo');
+        // dd($message);
+        if (empty($message) && strcmp($request->c_id, $message['cid']) != 0) {
+            $userInfo = array('cid' => $request->c_id, 'uuid' => $request->c_id);
             Cookie::queue('userInfo', $userInfo, 10);
-            $candidate = Candidate::where('c_id', $cId)->first();
+            $candidate = Candidate::where('c_id', $request->c_id)->first();
+            $vote = $candidate->vote()->first();
+            if ($vote->status == 0) {
+                return Session('danger', '投票已经结束');
+            }
             $candidate->increment('c_score', 1);
+            return Session('success', '投票成功');
         }
-        
+
         return Session('danger', '只能投1次');
     }
 
