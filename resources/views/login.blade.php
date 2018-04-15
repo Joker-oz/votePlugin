@@ -1,14 +1,6 @@
 @extends('default')
 @section('title', 'login')
 @section('content')
-<div class="gra-md-fir-tit">
-  <span id="first">电子科技大学成都学院-计算机系</span>
-</div>
-
-<div class="gra-md-sec-tit">
-  <span id="second">毕业设计管理系统</span>
-</div>
-
 <div class="gra-md-form">
   <form method="post" action="{{url('')}}/login">
     {{ csrf_field() }}

@@ -13,7 +13,7 @@ class VoteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show', 'addScore', 'showToOther']]);
+        $this->middleware('auth', ['except' => ['show', 'addScore']]);
     }
 
     /**
@@ -63,7 +63,7 @@ class VoteController extends Controller
                 }
                 $cname = 'c_name'.$num;
                 $candidate->c_name = $request->$cname;
-                $candidate->c_id = $vote->id.'_'.$num;
+                $candidate->c_id = $vote->id.$num;
                 $candidate->v_id =  $vote->id;
                 $candidate->save();
                 $num++;
@@ -125,23 +125,21 @@ class VoteController extends Controller
      * @method addScore
      * @param  [type]   $cId [description]
      */
-    public function addScore( Request $request)
+    public function addScore($cId, Request $request)
     {
         // dd(Cookie::get('userInfo'));
         // if (empty(Cookie::get('userInfo'))) {
-            // if (\Cache::has('vote')) {
-            //     $cId = (string)$request->c_id;
-            //     \Cache::increment($cId);
-            //     $userInfo = array('cid' => $cId, 'uuid' => $request->check);
-            //     Cookie::queue('userInfo', $userInfo, 10);
-            // } else {
-                $candidate = Candidate::where('c_id', $request->c_id)->first();
-                $candidate->increment('c_score', 1);
-            // }
-            // dd($candidate);
-            return Session('success', '投票成功');
-          // }
-        return Session('danger', '只能投1次');
+        //     if (\Cache::has('vote')) {
+        //         $cId = (string)$cId;
+        //         \Cache::increment($cId);
+        //         $userInfo = array('cid' => $cId, 'uuid' => $request->check);
+        //         Cookie::queue('userInfo', $userInfo, 10);
+        //     } else {
+        $candidate = Candidate::where('c_id', $cId)->first();
+        $candidate->increment('c_score', 1);
+        //     }
+        // }
+        // return Session('danger', '只能投1次');
     }
 
     /**
@@ -152,7 +150,8 @@ class VoteController extends Controller
      */
     public function sendScore($vId)
     {
-        $voteInfo = Vote::where('id', $vId)->with('candidate')->first();
-        return view('show', compact('voteInfo'));
+        $vote = Vote::where('id', $vId)->with('candidate')->first();
+        $candidate = $vote->candidate;
+        return $candidate;
     }
 }
