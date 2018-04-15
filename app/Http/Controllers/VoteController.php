@@ -112,10 +112,7 @@ class VoteController extends Controller
     {
         $voteInfo = Vote::where('id', $vId)->with('candidate')->first();
         //如果没有缓存的话，将候选数据填入缓存中。投票持续时间为缓存的生命时长
-        \Cache::flush();
-        if (!\Cache::has('vote')) {
-            $voteInfo->candidateRedis($vId);
-        }
+
         return view('mobel', compact('voteInfo'));
         // return $voteInfo;
     }
@@ -128,18 +125,14 @@ class VoteController extends Controller
     public function addScore($cId, Request $request)
     {
         // dd(Cookie::get('userInfo'));
-        // if (empty(Cookie::get('userInfo'))) {
-        //     if (\Cache::has('vote')) {
-        //         $cId = (string)$cId;
-        //         \Cache::increment($cId);
-        //         $userInfo = array('cid' => $cId, 'uuid' => $request->check);
-        //         Cookie::queue('userInfo', $userInfo, 10);
-        //     } else {
-        $candidate = Candidate::where('c_id', $cId)->first();
-        $candidate->increment('c_score', 1);
-        //     }
-        // }
-        // return Session('danger', '只能投1次');
+        if (empty(Cookie::get('userInfo'))) {
+            $userInfo = array('cid' => $cId, 'uuid' => $request->check);
+            Cookie::queue('userInfo', $userInfo, 10);
+            $candidate = Candidate::where('c_id', $cId)->first();
+            $candidate->increment('c_score', 1);
+        }
+        
+        return Session('danger', '只能投1次');
     }
 
     /**
