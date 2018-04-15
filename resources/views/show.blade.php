@@ -58,8 +58,7 @@
 
   <script type="text/javascript"  runat = "server" >
 
-  var endTime = new Date();
-  var times = "{{ $voteInfo->updated_at }}";
+
   var test = [];
   var datass = [];
 
@@ -166,15 +165,17 @@
       }
     };
 
-    Chart.Bar('chart', {
+    var chart = new Chart.Bar('chart', {
       options: options,
       data: data
     });
-
+  var interval =  setInterval("longPolling()", 3000);
    function longPolling() {
-      if (times-endTimes <= 0) {
-        clearInterval(interval);
-      }
+     // var endTime = "/";
+     // var times = "{{ $voteInfo->updated_at }}";
+     //  if (times-endTime >= 0 ) {
+     //    clearInterval(interval);
+     //  }
        $.ajax({
          url: "/vote/{{$voteInfo->id}}/send/score",
          type:"get",
@@ -192,52 +193,13 @@
          },
          success: function (data, textStatus) {
            voteInfo = data;
-
-           var test = [];
-           var datass = [];
-           var data = {};
-           var name = "datasets";
-           var namaes = "labels";
-           var nnn = "data";
-           var dsfg = [{
-             label: "Dataset #1",
-             backgroundColor: "rgba(255,99,132,0.2)",
-             borderColor: "rgba(255,99,132,1)",
-             borderWidth: 2,
-             hoverBackgroundColor: "rgba(255,99,132,0.4)",
-             hoverBorderColor: "rgba(255,99,132,1)",
-           }];
+           var da = [];
            for(var i = 0; i < voteInfo.length; i++)
            {
-             test.push(voteInfo[i].c_name);
-             datass.push(voteInfo[i].c_score);
+             da.push(voteInfo[i].c_score);
            }
-           dsfg[0].data = datass;
-           data[name] = dsfg;
-           data[namaes] = test;
-
-           var options = {
-             maintainAspectRatio: false,
-             scales: {
-               yAxes: [{
-                 stacked: true,
-                 gridLines: {
-                   display: true,
-                   color: "rgba(255,99,132,0.2)"
-                 }
-               }],
-               xAxes: [{
-                 gridLines: {
-                   display: false
-                 }
-               }]
-             }
-           };
-
-           Chart.Bar('chart', {
-             options: options,
-             data: data
-           });
+           chart.data[name][0][nnn] = da;
+           chart.update();
            // if (textStatus == "success") { // 请求成功
            //     longPolling();
            // }
