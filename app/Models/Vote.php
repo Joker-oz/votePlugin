@@ -36,7 +36,6 @@ class Vote extends Model
         $qr = QrCode::format('png')
             ->size(600)
             ->margin(1)
-            ->merge(public_path().'/pictures/demo.jpg', .3, true)
             ->encoding('UTF-8')
             ->errorCorrection("H")
             ->generate(config('app.url').'/vote/'.$vid.'/show', public_path().$adrress);
