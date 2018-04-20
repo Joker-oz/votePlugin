@@ -13,7 +13,7 @@ class VoteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show', 'addScore']]);
+        $this->middleware('auth', ['except' => ['show', 'addScore','showToOther']]);
     }
 
     /**
@@ -80,7 +80,7 @@ class VoteController extends Controller
         $vote = Vote::where('id', $request->vId)->first();
         $vote->status = 0;
         $vote->save();
-        return redirect()->route('index');
+        return redirect()->route('vote.show', $vote->id);
     }
 
     /**
@@ -124,21 +124,21 @@ class VoteController extends Controller
     public function addScore(Request $request)
     {
         // dd(Cookie::get('userInfo'));
-        // $message = Cookie::get('userInfo');
-        // // dd($message);
-        // if (empty($message) && strcmp($request->c_id, $message['cid']) != 0) {
-        //     $userInfo = array('cid' => $request->c_id, 'uuid' => $request->c_id);
-        //     Cookie::queue('userInfo', $userInfo, 10);
-        $candidate = Candidate::where('c_id', $request->c_id)->first();
-        // $vote = $candidate->vote()->first();
-        // if ($vote->status == 0) {
-        //     return Session('danger', '投票已经结束');
-        // }
-        $candidate->increment('c_score', 1);
-        //     return Session('success', '投票成功');
-        // }
-        //
-        // return Session('danger', '只能投1次');
+        $message = Cookie::get('userInfo');
+        // dd($message);
+        if (empty($message) && strcmp($request->c_id, $message['cid']) != 0) {
+            $userInfo = array('cid' => $request->c_id, 'uuid' => $request->c_id);
+            Cookie::queue('userInfo', $userInfo, 10);
+            $candidate = Candidate::where('c_id', $request->c_id)->first();
+            $vote = $candidate->vote()->first();
+            if ($vote->status == 0) {
+                return Session('danger', '投票已经结束');
+            }
+            $candidate->increment('c_score', 1);
+            return Session('success', '投票成功');
+        }
+
+        return Session('danger', '只能投1次');
     }
 
     /**
@@ -151,6 +151,9 @@ class VoteController extends Controller
     {
         $vote = Vote::where('id', $vId)->with('candidate')->first();
         $candidate = $vote->candidate;
+        $candidate['0']->nowTime = date('Y-m-d H:i:s');
+        $candidate['0']->status = $vote->status;
+        // dd($candidate);
         return $candidate;
     }
 }

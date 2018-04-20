@@ -164,18 +164,15 @@
         }]
       }
     };
-
+    var times = "{{ $voteInfo->updated_at }}";
+    var endTime = "<?php echo date('Y-m-d H:i:s');?>";
     var chart = new Chart.Bar('chart', {
       options: options,
       data: data
     });
   var interval =  setInterval("longPolling()", 3000);
    function longPolling() {
-     // var endTime = "/";
-     // var times = "{{ $voteInfo->updated_at }}";
-     //  if (times-endTime >= 0 ) {
-     //    clearInterval(interval);
-     //  }
+
        $.ajax({
          url: "/vote/{{$voteInfo->id}}/send/score",
          type:"get",
@@ -192,7 +189,14 @@
            }
          },
          success: function (data, textStatus) {
+
+
            voteInfo = data;
+           endTime = data[0].nowTime;
+            if ((new Date(endTime.replace(/-/g,"\/"))) > (new Date(times.replace(/-/g,"\/")))
+                  || data[0].status == 0) {
+              clearInterval(interval);
+            }
            var da = [];
            for(var i = 0; i < voteInfo.length; i++)
            {

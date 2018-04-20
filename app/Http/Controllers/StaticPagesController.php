@@ -52,6 +52,14 @@ class StaticPagesController extends Controller
      */
     public function show()
     {
+        $votes = Vote::Orderby('created_at', 'desc')->get();
+        $nowTime = date('Y-m-d H:i:s');
+        foreach ($votes as $key => $value) {
+            if ($nowTime > $value->updated_at) {
+                $value->status = 0;
+                $value->update();
+            }
+        }
         $votes = Vote::Orderby('created_at', 'desc')->paginate(10);
         return view('index', compact('votes'));
     }
