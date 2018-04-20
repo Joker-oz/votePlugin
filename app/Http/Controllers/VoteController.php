@@ -130,8 +130,11 @@ class VoteController extends Controller
             $userInfo = array('cid' => $request->c_id, 'uuid' => $request->c_id);
             Cookie::queue('userInfo', $userInfo, 10);
             $candidate = Candidate::where('c_id', $request->c_id)->first();
+            $nowTime = date('Y-m-d H:i:s');
             $vote = $candidate->vote()->first();
-            if ($vote->status == 0) {
+            if ($nowTime > $vote->updated_at) {
+                $vote->status = 0;
+                $vote->update();
                 return Session('danger', '投票已经结束');
             }
             $candidate->increment('c_score', 1);
