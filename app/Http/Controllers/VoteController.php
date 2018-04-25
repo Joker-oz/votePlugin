@@ -11,10 +11,10 @@ use Cookie;
 
 class VoteController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['show', 'addScore','showToOther']]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth', ['except' => ['show', 'addScore','showToOther']]);
+    // }
 
     /**
      * 加载创建投票的编辑界面
