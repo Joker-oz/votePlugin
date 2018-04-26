@@ -34,7 +34,7 @@
     </div>
     <!--二维码区域-->
     <div class="QR-code">
-        <img class="QR-img" src="../二维码.jpg" alt="二维码">
+        <img class="QR-img" src="/myImg/二维码.jpg" alt="二维码">
     </div>
 
 
