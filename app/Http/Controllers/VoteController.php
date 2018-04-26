@@ -23,7 +23,7 @@ class VoteController extends Controller
      */
     public function index()
     {
-        return view('create_vote');
+        return view('createVote');
     }
 
     /**

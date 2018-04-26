@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'account' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ];
     }
@@ -32,7 +32,7 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-        'accout.required' => '账号不能为空',
+        'username.required' => '账号不能为空',
         'password.required' => '密码不能为空'
       ];
     }

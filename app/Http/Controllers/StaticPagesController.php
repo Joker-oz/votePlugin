@@ -35,10 +35,11 @@ class StaticPagesController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = [
-        'uuid' => $request->account,
+        'uuid' => $request->username,
         'password'=> $request->password,
         ];
         if (!Auth::attempt($credentials)) {
+
             return Session('danger', '账号或者密码错误');
         }
 

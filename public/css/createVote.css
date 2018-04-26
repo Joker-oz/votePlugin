@@ -1,0 +1,457 @@
+body{
+    background:url(../myImg/new.jpg);
+    background-repeat: repeat;
+    position: relative;
+    margin:0px!important;
+    padding:0px;
+}
+#top-Bar{
+    width: 100%;
+    min-width: 1200px;
+    margin-bottom: 20px;
+    overflow: visible;
+    background-color: teal;
+}
+.top-nav-container{
+    width: 1200px;
+    margin: 0px auto;
+}
+.clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.clearfix::before{
+    content: "";
+    clear: both;
+    display: table;
+}
+.top-logo{
+    float: left;
+    display: block;
+    width: 30px;
+    height: 40px;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+}
+
+.title{
+    float: left;
+    display: block;
+    height: 40px;
+    text-decoration: none;
+    color: white;
+    font-family:YouYuan;
+    line-height: 40px;
+    font-weight: 800;
+    font-size: 25px;
+    margin-left: 15px;
+}
+#none:hover{
+    color: white;
+    cursor: default;
+    text-decoration: none;
+}
+.top-nav-list{
+    float: left;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    margin-left: 14px;
+    text-align: center;
+}
+.top-nav-list:hover{
+    text-decoration: none;
+}
+.top-nav-list:active{
+    text-decoration: none;
+}
+.top-nav-list:visited{
+    text-decoration: none;
+}
+.seg{
+    display: block;
+    float: left;
+    color: #E0E0E0;
+    line-height: 40px;
+    margin-left: 14px;
+}
+.logIn{
+    float: right;
+}
+.exit{
+    float: right!important;
+}
+.right{
+    float: right;
+}
+.top-nav-container a:hover{
+    text-decoration: none;
+    color: rgba(0, 0, 0, .8);
+    transition: all .2s;
+}
+#main-content-container{
+    width: 1200px;
+    margin: 0px auto;
+}
+.index:hover{
+    text-decoration: none;
+    transition: all .2s;
+}
+.info{
+    width: 1200px;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    background-color: #F0F0F0;
+    height: 50px;
+    border-radius: 10px;
+}
+.info a{
+    text-align: center;
+    text-decoration: none;
+    color:teal;
+}
+.info a:hover{
+    color: #01B468;
+}
+.info span{
+    float: left;
+    margin-left: 20px;
+    height: 50px;
+    line-height: 50px;
+}
+.info li{
+    float: left;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    color: black;
+    font-size: 16px;
+    margin-left: 20px;
+}
+.return{
+    float: right!important;
+    margin-right: 15px;
+}
+/*创建投票的细节项CSS样式*/
+#main-wrapper{
+	position: relative;
+
+	margin-top: 20px;
+}
+.operate-bar-container{
+	height: auto;
+    width: 720px;
+    margin-left: 0px;
+}
+.clearfix::before{
+	content: "";
+	display: table;
+	clear: both;
+}
+.clearfix::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.btn{
+    transition:all .2s;
+}
+#vote-of-man-item h2{
+	margin: 0px;
+    padding:10px 0px;
+    font-weight: bold;
+}
+#vote-of-man-item h3{
+	margin: 0px;
+	padding: 10px 0px;
+	font-weight:400!important;
+	border-bottom: 1px solid rgba(0,0,0,.4);
+}
+#vote-of-project-item h2{
+	margin: 0px;
+    padding:10px 0px;
+    font-weight: bold;
+}
+#vote-of-project-item h3{
+	margin: 0px;
+	padding: 10px 0px;
+	font-weight:400!important;
+	border-bottom: 1px solid rgba(0,0,0,.4);
+}
+.control-label{
+    margin-bottom: 0px;
+    float: left;
+    margin-left: 80px;
+	text-align: right;
+    width: 60px;
+    font-weight: 400;
+	font-size:14px;
+    line-height: 20px;
+}
+.item-group {
+	margin-bottom: 20px;
+}
+.top-one{
+	margin-top: 20px;
+}
+.control{
+    margin-left: 160px;
+    margin-bottom: 10px;
+}
+.inputTitle{
+	height: 20px;
+	font-size: 14px;
+	line-height: 20px;
+	padding: 13px 6px;
+	border-radius: 5px; 
+    border: 1px solid rgba(0,0,0,.4);
+    outline: none;
+    transition: all .3s;
+}
+.voteType,.pro-voteType{
+    margin:0px 8px!important;
+    margin-left: 0px!important;
+}
+.privacy,.pro-privacy{
+    margin: 0px 8px!important;
+    margin-left: 0px!important;
+}
+.radio{
+    display: inline!important;
+    max-width:140px!important;
+    position: static!important;
+    margin: 0px!important;
+	min-height: 20px;
+	line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+input[type=radio]{
+    margin: 0px;
+}
+.txtarea{
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.2);
+
+}
+
+
+/*投票选项区域*/
+.choice-container{
+    position: relative;
+    margin: 0px;
+}
+.options{
+    margin-bottom: 0px;
+    vertical-align: center;
+    margin-top: 10px;
+}
+.add-num{
+    display: inline-block;
+    height: 33.6px;
+    min-width: 35px;
+    padding: 5px 8px;
+    font-size: 14px;
+    line-height: 23px;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius:1px;
+    margin-right: 0.5px;
+}
+.inputOption{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 0px;
+    width: 300px;
+    line-height: 23.6px;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,.2);
+    border-left: none;
+    padding: 4.3px 6px;
+}
+.btn-control{
+    margin-top: 10px;
+}
+
+.inputOption-else{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 0px;
+    width: 300px;
+    line-height: 23.6px;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,.2);
+    border-left: none;
+    padding: 4.3px 6px;
+}
+
+.xuantian{
+    float: right;
+    margin-right: 315px;
+    padding-top:5.8px;
+    font-size: 16px;
+}
+
+
+
+/*候选人区块样式*/
+.candidate{
+    position: relative;
+    width: 720px;
+    margin-top: 20px;
+    display: table;
+    font-size: 14px;
+}
+.candidate label{
+    font-weight: 400;
+}
+.num-add{
+    display:inline-block;
+    vertical-align: top;
+    margin-top:5px;
+    height: 25px;
+    width: 45px;
+    margin-left: 1px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.2);
+}
+#div-toggle{
+    /*display: inline-block;*/
+    display: none;
+    vertical-align: top;
+}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+}
+.cderNumber{
+    display: inline-block;
+    margin-left: 200px;
+    vertical-align: top;
+    width: 146px;
+    padding-top: 5px;
+    font-weight:bold!important;
+    font-size: 16px;
+}
+.btn-primary{
+    vertical-align: top!important;
+    margin-left: 10px;
+}
+.candidater-bar{
+    position: relative;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,.4);
+}
+
+.tb-cell{
+    display: inline-block;
+}
+.mar-bottom{
+    margin-bottom: 20px!important;
+}
+.candidater-info{
+    position: relative;
+    margin-left: 60px;
+}
+.ver-align{
+    resize: none;
+    vertical-align: top;
+}
+.table thead tr td{
+    font-weight: bold;
+    font-size: 18px;
+}
+.height{
+    padding: 4px 3px;
+}
+input[type="file"]{
+    display: none!important;
+}
+.showfile{
+    padding: 4px 3px;
+    width: 100px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.2);
+    margin-left: 15px;
+}
+.vote-of-man{
+    margin-left: 10px;
+}
+#vote-data-of-man{
+    position: relative;
+}
+#vote-data-of-project{
+    position: relative;
+}
+
+/*主体内容右侧列表*/
+
+#right-side-container{
+    position: absolute;
+    display: inline-block;
+    width: 30%;
+    top: 80px;
+    right:0px;
+    padding-left: 20px;
+}
+.help-str{
+    font-weight: bold!important;
+}
+.help-ul li{
+    line-height: 25px;
+}
+.help-ul li a{
+    font-size: 15px;
+}
+.light a{
+    color: red!important;
+}
+.vote-demo{
+    margin-top: 20px;
+}
+.demo{
+    padding: 20px;
+}
+.demo li{
+    line-height: 25px;
+}
+.demo li a{
+    font-size: 15px;
+}
+/*底部*/
+#footer{
+    margin-top: 280px!important;
+    border-top: 1px solid rgba(0,0,0,.4);
+    background-color: rgba(0,0,0,.1);
+}
+.footer-container{
+    position: relative;
+    width: 1200px;
+    margin: 0px auto;
+    text-align: center;
+}
+.ending{
+    list-style-type: none;
+    padding: 0px;
+    padding-left:475px;
+    margin-bottom: 0px;
+}
+.ending li,span{
+    float: left;
+    margin-left: 0px;
+    margin-bottom: 0px!important;
+}
+.fa-css3{
+    color: #0080FF;
+}
+.fa-html5{
+    color: #FF2D2D;
+}
+
+
