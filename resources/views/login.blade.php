@@ -7,7 +7,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/login.css">
-    <script src="https://use.fontawesome.com/0ce41ada9d.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="top-Bar">
@@ -58,7 +58,7 @@
             </form>
             <div class="remember-box">
                 <label>
-                    <input type="checkbox">&nbsp;Remember Me
+                    <input type="checkbox" value="记住">&nbsp;Remember Me
                 </label>
                 </div>
                 <div class="login-button-box">
@@ -84,6 +84,6 @@
     </div>
 </body>
 <script src="/js/jquery.js"></script>
-<script src="/js/bootstrap/js/bootstrap.min.js"></script>
+<script src="/css/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/login.js"></script>
 </html>

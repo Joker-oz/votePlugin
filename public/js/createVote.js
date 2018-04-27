@@ -129,9 +129,9 @@ $(document).ready(function(){
    var projectBar = $('#vote-of-project-item');//事物类投票创建区域
    var ofProject = $('.vote-of-project');//两个事物类投票按钮
    var ofMan = $('.vote-of-man');//两个人物类投票按钮
+   var styleValue = ['solid','black','1px'];
    for(var i = 0; i < ofProject.length; i++){
     ofProject[i].onclick = function(){
-
         manBar.hide();
         projectBar.show();
         };
@@ -141,7 +141,46 @@ $(document).ready(function(){
         projectBar.hide();
         manBar.show();
         };
-    };
+    }
+
+    //人物类投票活动起止日期选择
+    $(function() {
+        $( "#from" ).datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 1,
+          onClose: function( selectedDate ) {
+            $( "#to" ).datepicker( "option", "minDate", selectedDate );
+          }
+        });
+        $( "#to" ).datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths:1,
+          onClose: function( selectedDate ) {
+            $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+          }
+        });
+      });
+      //事物类投票活动起止日期选择
+      $(function() {
+        $( "#start" ).datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 1,
+          onClose: function( selectedDate ) {
+            $( "#end" ).datepicker( "option", "minDate", selectedDate );
+          }
+        });
+        $( "#end" ).datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths:1,
+          onClose: function( selectedDate ) {
+            $( "#start" ).datepicker( "option", "maxDate", selectedDate );
+          }
+        });
+      });
 
    
     

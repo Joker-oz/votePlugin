@@ -7,8 +7,9 @@
     <title>Creat-Vote</title>
     <link rel="stylesheet" href="/css/createVote.css">
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/jquery-UI/jquery-ui.css">
     <!--Fontawesome Icon-->
-    <script src="https://use.fontawesome.com/0ce41ada9d.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <!--头部导航开始-->
@@ -36,7 +37,7 @@
     </div>
     <!--头部导航结束-->
 
-    <!--主体创建投票内容部分开始-->
+    <!--候选人类型投票内容部分开始-->
     <div id="main-content-container">
         <ul class="info">
             <li><a href="{{ url('/index')}}" class="index">首页</a></li>
@@ -46,10 +47,10 @@
         </ul>
         <div id="main-wrapper">
             <div class="operate-bar-container clearfix">
-                <div id="vote-of-man-item" style="display:none;">
+                <div id="vote-of-man-item" style="display:block;">
                     <h2 class="strong">创建投票</h2>
-                    <button class="btn btn-success vote-of-project">创建事物类投票</button>
-                    <button class="btn btn-danger vote-of-man">创建人物类投票</button>
+                    <button class="btn btn-success vote-of-project" index="1">创建事物类投票</button>
+                    <button class="btn btn-danger vote-of-man" index="1">创建人物类投票</button>
                     <h3>候选人投票基本设置</h3>
                     <form id="vote-data-of-man" action="">
                         <div class="item-group top-one">
@@ -118,18 +119,31 @@
 
                         <!--投票截止日期-->
 
+
+                        <div class="deadLine-container clearfix">
+                            <h3>请选择投票活动起止日期</h3>
+                            <div class="dateComponent">
+                                <label for="from">开始：</label>
+                                <input type="text" id="from" name="startTime" required="required">
+                                <label for="to">结束：</label>
+                                <input type="text" id="to" name="endTime" required="required">
+                            </div>
+                        </div>
+
                         <!--投票截止日期结束-->
 
                         <button id="submit-of-man" type="submit" class="btn btn-success">创建投票</button>
                     </form>
                     <!--表单结束-->
                 </div>
-                <!--投票主体内容结束-->
+                <!--候选人类投票结束-->
+
+
                 <!--事物类投票开始-->
-                <div id="vote-of-project-item" style="display:block;">
+                <div id="vote-of-project-item" style="display:none;">
                     <h2 class="strong">创建投票</h2>
-                    <button class="btn btn-success vote-of-project">创建事物类投票</button>
-                    <button class="btn btn-danger vote-of-man">创建人物类投票</button>
+                    <button class="btn btn-success vote-of-project" index="2">创建事物类投票</button>
+                    <button class="btn btn-danger vote-of-man" index="2">创建人物类投票</button>
                     <h3>事物类投票基本设置</h3>
                     <form id="vote-data-of-project" action="">
                         <div class="item-group top-one">
@@ -141,20 +155,20 @@
                         <div class="item-group">
                             <label class="control-label">投票类型</label>
                             <div class="control">
-                                <input id="dan" class="pro-voteType" type="radio" name="pro-voteType" required="required">
+                                <input id="dan" class="pro-voteType" type="radio" name="pro-voteType" required="required" value="单选">
                                 <label class="radio" for="dan">单选</label>						
-                                <input style="margin-left:8px!important;" id="duo" class="pro-voteType" type="radio" name="pro-voteType" required="required">
+                                <input style="margin-left:8px!important;" id="duo" class="pro-voteType" type="radio" name="pro-voteType" required="required" value="多选">
                                 <label class="radio" for="duo">多选</label>
                             </div>
                         </div>
                         <div class="item-group">
                             <label class="control-label">投票隐私</label>
                             <div class="control">
-                                <input class="pro-privacy" id="any-one" type="radio" name="pro-votePrivacy" required="required">
+                                <input class="pro-privacy" id="any-one" type="radio" name="pro-votePrivacy" required="required" value="任何人可查看和投票">
                                 <label class="radio" for="any-one">任何人可查看和投票</label>
                             </div>
                             <div class="control">
-                                <input class="pro-privacy" id="need-Right" type="radio" name="pro-votePrivacy" required="required">
+                                <input class="pro-privacy" id="need-Right" type="radio" name="pro-votePrivacy" required="required" value="凭密码查看和投票">
                                 <label class="radio" for="need-Right">凭密码查看和投票</label>
                             </div>
                         </div>
@@ -185,6 +199,17 @@
                         <h3>基本候选人设置</h3>
                         -->
                         <!--投票截止日期开始-->
+
+                        
+                        <div class="deadLine-container clearfix">
+                            <h3>请选择投票活动起止日期</h3>
+                            <div class="dateComponent">
+                                <label for="start">开始：</label>
+                                <input type="text" id="start" name="startTime" required="required">
+                                <label for="end">结束：</label>
+                                <input type="text" id="end" name="endTime" required="required">
+                            </div>
+                        </div>
 
                         <!--投票截止日期结束-->
                         <button id="submit-of-project" type="submit" class="btn btn-success btn-control">创建投票</button>
@@ -224,6 +249,7 @@
         </div>
     </div>
     <script src="/js/jquery.js"></script>
+    <script src="/css/jquery-UI/jquery-ui.js"></script>
     <script src="/css/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/createVote.js"></script>
 </body>

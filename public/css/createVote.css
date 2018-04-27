@@ -294,7 +294,7 @@ input[type=radio]{
 
 .xuantian{
     float: right;
-    margin-right: 315px;
+    margin-right: 325px;
     padding-top:5.8px;
     font-size: 16px;
 }
@@ -452,6 +452,29 @@ input[type="file"]{
 }
 .fa-html5{
     color: #FF2D2D;
+}
+.deadLine-container{
+    margin-top: 40px;
+    width: 720px;
+    height: 100px;
+}
+.deadLine-container h3{
+    font-weight: bold;
+}
+.dateComponent{
+    margin-top: 20px;
+}
+#submit-of-project{
+    margin-top: 40px;
+}
+.dateComponent label{
+    font-size: 15px;
+    font-family:default;
+    font-weight:500!important;
+}
+
+#submit-of-man{
+    margin-top: 40px;
 }
 
 

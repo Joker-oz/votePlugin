@@ -7,7 +7,7 @@
     <title>Vote for Live</title>
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css">
-    <script src="https://use.fontawesome.com/0ce41ada9d.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <!--头部导航开始-->
