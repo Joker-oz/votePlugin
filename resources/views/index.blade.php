@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body>  
     <!--头部导航开始-->
     <div id="top-Bar">
         <div class="top-nav-container clearfix">
@@ -22,15 +23,19 @@
             <a href="{{ url('/index')}}" class="top-nav-list">首页</a>
             <span class="seg">|</span>
             <a href="{{ route('vote.edit')}}" class="top-nav-list">开始创建</a>
-            <span class="seg">|</span>
-            <a href="./跳转票数直播.html" class="top-nav-list">票数直播</a>
-            <a href="" class="top-nav-list exit">
-                退出
-            </a>
-            <span class="seg right">|</span>
-            <a href="./用户登录界面.html" class="top-nav-list logIn">
-                登录
-            </a>     
+        <form action="{{ route('logout')}}" method="POST" >
+            {{csrf_field()}}
+            {{method_field('DELETE')}}
+            <input type="submit" class="top-nav-list exit" name="" id="" value="退出"> 
+        </form>
+            
+            @if(!Auth::check())
+                <span class="seg right">|</span>
+                <a href="{{ route('login')}}" class="top-nav-list logIn">
+                    登录
+                </a>
+            @endif
+           
         </div>
     </div>
     <!--头部导航结束-->
@@ -40,7 +45,6 @@
         <ul class="info">
             <li><a href="{{ url('/index')}}" class="index">首页</a></li>
             <span>/</span>
-            <li class="return"><a href="{{ url('/index')}}"><button type="button" class="btn btn-danger">返回</button></a></li>
         </ul>
         <div id="main-wrapper">
             <div class="operate-bar-container clearfix">
@@ -52,25 +56,28 @@
                             <td>投票活动状态</td>
                             <td>票数图表</td>
                         </thead>
-                        <tr>
-                            <td class="pro-name">《定格时光》摄影大赛</td>
-                            <td>2018.4.22——2018.5.10</td>
-                            <td>正在进行</td>
-                            <td><a href="./票数动态变化.html"><button type="button" class="btn btn-warning">点击查看</button></a></td>
-                        </tr>
-                        <tr>
-                            <td class="pro-name">《优舞明星》人气选拔</td>
-                            <td>2018.4.22——2018.5.10</td>
-                            <td>已结束</td>
-                            <td><button type="button" class="btn btn-warning">点击查看</button></td>
-                        </tr>
+                        @foreach($votes as $vote)
+                            <tr>
+                            <td class="pro-name">{{$vote->title}}</td>
+                            <td> {{$vote->created_at}} —— {{$vote->updated_at}}</td>
+                            @if( $vote->status == 0)
+                                <td>已结束</td>
+                            @else
+                                <td>进行中</td>
+                            @endif
+                             
+                            <td><a href="{{ route('vote.show',$vote->id) }}"><button type="button" class="btn btn-warning">点击查看</button></a></td>
+                            </tr>
+                        @endforeach
+                        
                     </table>
+                    {{ $votes->links() }}
+                    
                 </div>
             </div>
              <!--画布区域-->
         </div>
     </div>
-
 
     <!--票数图表结束-->
 
@@ -82,11 +89,11 @@
             <i class="fa fa-css3 fa-2x" aria-hidden="true"></i>
             <i class="fa fa-html5 fa-2x" aria-hidden="true"></i>
             <ul class="ending clearfix">
-                <li><a href="">关于</a></li>
+                <li><a href="#">关于</a></li>
                 <span class="ft-seg">·</span>
-                <li><a href="">联系我们</a></li>
+                <li><a href="#">联系我们</a></li>
                 <span class="ft-seg">·</span>
-                <li><a href="">使用帮助与常见问题</a></li>
+                <li><a href="#">使用帮助与常见问题</a></li>
             </ul>
         </div>
     </div>

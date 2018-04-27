@@ -97,7 +97,7 @@ class VoteController extends Controller
         if (!\Cache::has('vote')) {
             $voteInfo->candidateRedis($vId);
         }
-        return view('show', compact('voteInfo'));
+        return view('showing', compact('voteInfo'));
         // return $voteInfo;
     }
 

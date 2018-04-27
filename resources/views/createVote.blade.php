@@ -52,14 +52,15 @@
                     <button class="btn btn-success vote-of-project" index="1">创建事物类投票</button>
                     <button class="btn btn-danger vote-of-man" index="1">创建人物类投票</button>
                     <h3>候选人投票基本设置</h3>
-                    <form id="vote-data-of-man" action="">
+                <form id="vote-data-of-man" action="{{ route('vote.store')}}">
+                        {{ csrf_field() }}
                         <div class="item-group top-one">
                             <label class="control-label" for="inputTitle" style="padding:5px 0px;">投票标题</label>
                             <div class="control">
                             <input id="inputTitle" class="inputTitle" type="text" name="voteTitle" placeholder="请填入投票标题" required="required">
                             </div>
                         </div>
-                        <div class="item-group">
+                        {{-- <div class="item-group">
                             <label class="control-label">投票类型</label>
                             <div class="control">
                                 <input id="danxuan" class="voteType" type="radio" name="voteType" required="required" value="单选">
@@ -67,8 +68,8 @@
                                 <input style="margin-left:8px!important;" id="duoxuan" class="voteType" type="radio" name="voteType" required="required" value="多选">
                                 <label class="radio" for="duoxuan">多选</label>
                             </div>
-                        </div>
-                        <div class="item-group">
+                        </div> --}}
+                        {{-- <div class="item-group">
                             <label class="control-label">投票隐私</label>
                             <div class="control">
                                 <input class="privacy" id="anyone" type="radio" name="votePrivacy" value="任何人可查看和投票">
@@ -78,7 +79,7 @@
                                 <input class="privacy" id="needRight" type="radio" name="votePrivacy" value="凭密码查看和投票">
                                 <label class="radio" for="needRight">凭密码查看和投票</label>
                             </div>
-                        </div>
+                        </div> --}}
                         <h3>活动介绍</h3>
                         <h5 style="font-weight: 400;margin:10px 0px;">请在下方输入本次投票活动的主题内容：</h5>
                         <textarea id="act-content" class="txtarea" rows="15" cols="75" name="vote-theme" style="resize: none;font-size: 16px;margin-bottom: 20px;" required="required"></textarea>
@@ -102,13 +103,13 @@
                                     </thead>
                                     <tr>
                                         <td>
-                                            <input id="cname" class="txtarea height" type="text" name="candidater-name_1" placeholder="请输入候选人姓名" required="required">
+                                            <input id="cname" class="txtarea height" type="text" name="c_name1" placeholder="请输入候选人姓名" required="required">
                                         </td>
                                         <td>
-                                            <input id="cinfo" class="txtarea height" type="text" name="candidater-info_1" placeholder="输入简介" required="required">
+                                            <input id="cinfo" class="txtarea height" type="text" name="c_sckech1" placeholder="输入简介" required="required">
                                         </td>
                                         <td>
-                                            <input id="file" type="file" name="candidater-pic_1">
+                                            <input id="file" type="file" name="file1" enctype="multipart/form-data">
                                             <button id="submitPic" type="button" class="btn btn-warning submit-pic">上传本地图片</button><input disabled id="first-show" type="text" class="showfile">
                                         </td>
                                     </tr>
@@ -119,16 +120,15 @@
 
                         <!--投票截止日期-->
 
-
-                        <div class="deadLine-container clearfix">
-                            <h3>请选择投票活动起止日期</h3>
-                            <div class="dateComponent">
-                                <label for="from">开始：</label>
-                                <input type="text" id="from" name="startTime" required="required">
-                                <label for="to">结束：</label>
-                                <input type="text" id="to" name="endTime" required="required">
+                        <div class="keeping-time-container">
+                                <div class="setTime">
+                                    <button type="button" class="btn btn-primary set-time">设置投票持续时间</button>
+                                    <div class="set-main clearfix">
+                                        <input type="number" name="inputEndTime" class="setted" placeholder="持续时间/Min">
+                                        <span class="time-icon"><i class="fa fa-clock-o fa-2x color" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
                         <!--投票截止日期结束-->
 
@@ -149,10 +149,10 @@
                         <div class="item-group top-one">
                             <label class="control-label" for="inputTitle" style="padding:5px 0px;">投票标题</label>
                             <div class="control">
-                            <input id="inputTitle" class="inputTitle" type="text" name="voteTitle" placeholder="请填入投票标题" required="required">
+                            <input id="inputTitle" class="inputTitle" type="text" name="title" placeholder="请填入投票标题" required="required">
                             </div>
                         </div>
-                        <div class="item-group">
+                        {{-- <div class="item-group">
                             <label class="control-label">投票类型</label>
                             <div class="control">
                                 <input id="dan" class="pro-voteType" type="radio" name="pro-voteType" required="required" value="单选">
@@ -160,18 +160,8 @@
                                 <input style="margin-left:8px!important;" id="duo" class="pro-voteType" type="radio" name="pro-voteType" required="required" value="多选">
                                 <label class="radio" for="duo">多选</label>
                             </div>
-                        </div>
-                        <div class="item-group">
-                            <label class="control-label">投票隐私</label>
-                            <div class="control">
-                                <input class="pro-privacy" id="any-one" type="radio" name="pro-votePrivacy" required="required" value="任何人可查看和投票">
-                                <label class="radio" for="any-one">任何人可查看和投票</label>
-                            </div>
-                            <div class="control">
-                                <input class="pro-privacy" id="need-Right" type="radio" name="pro-votePrivacy" required="required" value="凭密码查看和投票">
-                                <label class="radio" for="need-Right">凭密码查看和投票</label>
-                            </div>
-                        </div>
+                        </div> --}}
+                        {{-- 1 --}}
                         <h3>活动介绍</h3>
                         <h5 style="font-weight: 400;margin:10px 0px;">请在下方输入本次投票活动的主题内容：</h5>
                         <textarea id="act-content" class="txtarea" rows="15" cols="75" name="vote-theme" style="resize: none;font-size: 16px;margin-bottom: 20px;" required="required"></textarea>
@@ -179,7 +169,7 @@
                         <div class="choice-container">
                             <div class="options">
                                 <span class="add-num">1</span>
-                                <input class="inputOption" type="text" name="options_1" placeholder="请输入投票选项" required="required">
+                                <input class="inputOption" type="text" name="options_1" placeholder="请输入投票选项" required="required"><input id="another-file" type="file" name="file1" enctype="multipart/form-data"><button id="submitPic-of-pro" type="button" class="btn btn-warning pro-pic">上传相关图片</button><input disabled id="sc-show" type="text" class="pro-showfile">
                             </div>
                         </div>
                        
@@ -194,23 +184,20 @@
                         <!--添加投票项结束-->
 
                         
-                        <!--
-                        <h2 style="margin-top:20px;">创建候选人</h2>
-                        <h3>基本候选人设置</h3>
-                        -->
+                      
                         <!--投票截止日期开始-->
 
-                        
-                        <div class="deadLine-container clearfix">
-                            <h3>请选择投票活动起止日期</h3>
-                            <div class="dateComponent">
-                                <label for="start">开始：</label>
-                                <input type="text" id="start" name="startTime" required="required">
-                                <label for="end">结束：</label>
-                                <input type="text" id="end" name="endTime" required="required">
+                        <div class="keeping-time-container pro-setTime">
+                                <div class="setTime">
+                                    <button type="button" class="btn btn-primary set-time">设置投票持续时间</button>
+                                    <div class="set-main clearfix">
+                                        <input type="number" name="inputEndTime" class="setted" placeholder="持续时间/Min">
+                                        <span class="time-icon"><i class="fa fa-clock-o fa-2x color" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
+            
                         <!--投票截止日期结束-->
                         <button id="submit-of-project" type="submit" class="btn btn-success btn-control">创建投票</button>
                     </form>

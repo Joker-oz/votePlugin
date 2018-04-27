@@ -13,7 +13,7 @@ class VoteTableSeeder extends Seeder
     public function run()
     {
         $votes = factory(Vote::class)
-                      ->times(1)
+                      ->times(40)
                       ->make();
         $vote_array = $votes->toArray();
 

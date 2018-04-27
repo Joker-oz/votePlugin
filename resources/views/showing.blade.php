@@ -34,7 +34,7 @@
     </div>
     <!--二维码区域-->
     <div class="QR-code">
-        <img class="QR-img" src="/myImg/二维码.jpg" alt="二维码">
+        <img class="QR-img" src="/myImg/QRImg.jpg" alt="二维码">
     </div>
 
 
@@ -73,6 +73,40 @@
     </div>-->
     <script src="/js/Chart.js"></script>
     <script src="/js/jquery.js"></script>
-    <script src="/js/showing.js"></script>
+    <script  runat="srever">
+        
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["贾国琛", "辛鹏辉", "何孟罡", "周玉龙", "Purple", "Orange","尹婷","中聪涵"],
+                datasets: [{
+                    label: '人气网红大赛',
+                    data: [12, 19, 3, 5, 2, 3,8,55],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255,99,132,1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
 </body>
 </html>
+
+[{
+    label: "Dataset #1",
+    backgroundColor: "rgba(255,99,132,0.2)",
+    borderColor: "rgba(255,99,132,1)",
+    borderWidth: 2,
+    hoverBackgroundColor: "rgba(255,99,132,0.4)",
+    hoverBorderColor: "rgba(255,99,132,1)",
+  }];

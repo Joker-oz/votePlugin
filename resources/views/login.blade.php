@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <!--
     <div id="top-Bar">
         <div class="top-nav-container clearfix">
             <a href="javascript:;" class="top-logo">
@@ -18,12 +19,10 @@
             <a href="" class="title" id="none">
                 Creat-Vote
             </a>
-            <!-- <a href="{{ route('index')}}" class="top-nav-list">首页</a> -->
-            <a href="{{ url('/index')}}" class="top-nav-list">首页</a>
+            <a href="" class="top-nav-list">首页</a>
+            <a href="" class="top-nav-list">首页</a>
             <span class="seg">|</span>
-            <a href="{{ route('vote.edit')}}" class="top-nav-list">开始创建</a>
-            <span class="seg">|</span>
-            <a href="./跳转票数直播.html" class="top-nav-list">票数直播</a>
+            <a href=" route('vote.edit')" class="top-nav-list">开始创建</a>
             <a href="" class="top-nav-list exit">
                 退出
             </a>
@@ -33,13 +32,15 @@
             </a>     
         </div>
     </div>
+    -->
     <!--登录主体-->
     <div id="logIn-container">
-        <ul class="info">
-            <li><a href="{{ url('/index')}}" class="index">首页</a></li>
+        <!--<ul class="info">
+            <li><a href="url('/index')" class="index">首页</a></li>
             <span>/</span>
             <li>登录</li>
         </ul>
+        -->
         <div class="logIn-box">
             <div class="logIn-header">
                 <h4>登录</h4>

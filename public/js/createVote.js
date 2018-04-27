@@ -9,7 +9,28 @@ $(document).ready(function(){
         var childrenSpan = $('<span></span>',{"class":"add-num"});
         childrenSpan.html(index);
         var childrenInput = $('<input>',{"class":"inputOption","type":"text","name":"options_ "+index,"placeholder":"请输入投票选项","required":"required"});
-        parentDiv.append(childrenSpan,childrenInput);
+        var childrenFlie = $('<input>',{"id":"another-file","type":"file","name":"file" + index,"enctype":"multipart/form-data"});
+        var childrenBtn = $('<button></button>',{"type":"button","class":"btn btn-warning pro-pic"});
+        childrenBtn.html("上传相关图片");
+        childrenBtn.on('click',function(){
+            childrenFlie.click();
+        })
+        var childrenShowInput = $('<input>',{"disabled":"disabled","type":"text","class":"pro-showfile"});
+        childrenFlie.on('change',function(){
+            var filepath = $(this).val();
+            if(filepath.indexOf('jpg')!= -1 || filepath.indexOf('png')!= -1){
+                var arr = filepath.split('\\');
+                console.log(arr);
+                var fileName = arr[arr.length-1];
+                console.log(fileName);
+                childrenShowInput.val(fileName);
+            }
+            else{
+                childrenShowInput.val('');
+                alert("上传的文件类型有误,请上传.jpg或.png类型的图片");
+            }
+        });
+        parentDiv.append(childrenSpan,childrenInput,childrenFlie,childrenBtn,childrenShowInput);
         $('.choice-container').append(parentDiv);
     };
     $('#addOpt').click(function(){
@@ -36,6 +57,29 @@ $(document).ready(function(){
     $('#submitPic').click(function(){
         openDialog();//相当于把点击事件转移到file input本身上来
     });
+    function openProDialog(){
+        $('#another-file').click();//事物类投票选项中的点击事件转移
+    }
+    $('#submitPic-of-pro').click(function(){
+        openProDialog();//相当于把点击事件转移到本来的input上
+    })
+
+    //文档中存在的第一个事物类投票选项上传照片触发文件名显示
+    $('#another-file').change(function(){
+        var filepath = $(this).val();
+        if(filepath.indexOf('jpg')!= -1 || filepath.indexOf('png')!= -1){
+            var arr = filepath.split('\\');
+            console.log(arr);
+            var fileName = arr[arr.length-1];
+            console.log(fileName);
+            $('#sc-show').val(fileName);
+        }else{
+            $('#sc-show').val('');
+            alert("上传的文件类型有误,请上传.jpg或.png类型的图片");
+        }
+    })
+
+
     //文档中存在的第一个候选人上传照片时触发文件名显示
     $('#file').change(function(){
         var filepath = $(this).val();
@@ -144,43 +188,7 @@ $(document).ready(function(){
     }
 
     //人物类投票活动起止日期选择
-    $(function() {
-        $( "#from" ).datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 1,
-          onClose: function( selectedDate ) {
-            $( "#to" ).datepicker( "option", "minDate", selectedDate );
-          }
-        });
-        $( "#to" ).datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths:1,
-          onClose: function( selectedDate ) {
-            $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-          }
-        });
-      });
-      //事物类投票活动起止日期选择
-      $(function() {
-        $( "#start" ).datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 1,
-          onClose: function( selectedDate ) {
-            $( "#end" ).datepicker( "option", "minDate", selectedDate );
-          }
-        });
-        $( "#end" ).datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths:1,
-          onClose: function( selectedDate ) {
-            $( "#start" ).datepicker( "option", "maxDate", selectedDate );
-          }
-        });
-      });
+   
 
    
     
