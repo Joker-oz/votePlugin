@@ -24,12 +24,10 @@
           			</div>
           			<div class="no-and-name">
           				<ul class="clearfix">
-          					<li><span>No.{{$key}}</span></li>
-          					<li class="c_name">{{$item->c_name}}</li>
+							<li class="left">No.{{$key + 1}}</li>
+							<li class="control"><input class="radio" type="radio" name="c_id" value="{{$item->c_id}}"></li>
+							<li class="c_name right">{{$item->c_name}}</li>
           				</ul>
-          			</div>
-          			<div class="click">
-          				<input class="radio" type="radio" name="c_id" value="{{$item->c_id}}">
           			</div>
           		</div>
       		  </div>
@@ -43,8 +41,8 @@
         <div class="footer">
             <h4>免费创建你的投票活动forFree</h4>
             <div class="icon-container">
-	            <i class="fa fa-css3 fa-2x" aria-hidden="true"></i>
-	            <i class="fa fa-html5 fa-2x" aria-hidden="true"></i>
+	            <i class="fa fa-css3" aria-hidden="true"></i>
+	            <i class="fa fa-html5" aria-hidden="true"></i>
         	</div>
         </div>
     </div>

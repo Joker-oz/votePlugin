@@ -6,9 +6,6 @@ html{
     html {
         font-size: 25px !important;
     }
-        .items .item-group:nth-child(3n){
-        margin-right: 0px;
-    }
     .no-and-name ul{
     font-size: 0.4rem;
     padding-top: 5%;
@@ -20,9 +17,6 @@ html{
 @media only screen and (min-width: 428px){
     html {
         font-size: 26.75px !important;
-    }
-    .items .item-group:nth-child(3n){
-        margin-right: 0px;
     }
     .no-and-name ul{
     font-size: 0.4rem;
@@ -37,25 +31,19 @@ html{
     html {
         font-size: 30px !important; 
     }
-    .items .item-group:nth-child(3n){
-        margin-right: 0px;
-    }
+    
 }
 @media only screen and (min-width: 569px){
     html {
         font-size: 35px !important; 
     }
-    .items .item-group:nth-child(3n){
-        margin-right: 0px;
-    }
+   
 }
 @media only screen and (min-width: 641px){
     html {
         font-size: 40px !important; 
     }
-    .items .item-group:nth-child(3n){
-        margin-right: 0px;
-    }
+    
 }
 /*以下为页面样式*/
 .top-title-container{
@@ -63,7 +51,7 @@ html{
     margin: 0px auto;
 }
 .text-adapt{
-    font-size: 1rem!important;
+    font-size: 1.3rem!important;
     text-align: center;
 }
 .myself{
@@ -76,23 +64,20 @@ html{
     margin-top: 1rem;
 }
 .items{
-    padding-top: 1rem;
+    padding-top: 1.3rem;
     width: 90vw;
-    border-top: 1px solid rgba(0,0,0,.3);
+    background-color: rgba(0,0,0,.05);
+    margin-bottom: 3vh;
 }
 .item-group{
     float: left;
-    width: 25vw;
-    height: 30vh;
-    background-color: rgba(0,0,0,.1);
-    margin-right: 7.5vw;
-    margin-bottom: 5vh;
+    width: 90vw;
+    height: 32vh;
 }
 .pic{
-    height: 70%;
-    width: 80%;
+    height: 80%;
+    width: 92%;
     margin:0px auto;
-    margin-top: 4%;
 }
 .pic a{
     display: block;
@@ -105,23 +90,43 @@ html{
     width:100%;
 }
 .no-and-name{
-    width: 85%;
-    height: 13%;
+    width: 92%;
+    height: 10%;
     margin: 0px auto;
 }
 .no-and-name ul{
-    padding-top: 5%;
-    padding-left: 5%;
+    padding-top: 1%;
+    padding-left: 0px;
     text-align: center;
     margin-bottom: 0px!important;   
+    height: 100%;
+    line-height: 100%;
+    margin-top: 1rem;
 }
+
 .no-and-name ul li{
     font-weight: bold;
     float: left;
     list-style: none;
-    margin-right: 6%;
-
+    height: 100%;
+    font-size: 1.1em;
+    width: 20%;
 }
+input[type=radio] {
+    margin:0px!important;
+    margin-top: 1px\9;
+    line-height: normal;
+}
+.control{
+    margin-left:28%;
+}
+.right{
+    text-align: right;
+}
+.left{
+    text-align: left;
+}
+
 .click{
     height: 10%;
     margin: 0px auto;
@@ -136,23 +141,24 @@ html{
     margin-bottom: 0px!important;
 }
 #footer-container{
-    background-color: rgba(0,0,0,.1);
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
 .footer{
     position: relative;
-    padding-top: 2vh;
-    height: 10vh;
+    padding-top: 1vh;
+    height: 9vh;
     width: 90vw;
     margin:0px auto;
     text-align: center;
 }
 .footer h4{
     margin: 0px auto;
+    font-size: 1rem;
 }
 .icon-container{
     width: 20vw;
     margin:0px auto;
+    margin-top:10px;
 }
 .fa-css3{
     color: blue;
