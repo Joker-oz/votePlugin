@@ -12,10 +12,10 @@ use App\Http\Requests\LoginRequest;
 
 class StaticPagesController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth', ['except' => ['index', 'login']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'login']]);
+    }
     /**
      * 管理员登录界面
      * @method index
@@ -39,7 +39,6 @@ class StaticPagesController extends Controller
         'password'=> $request->password,
         ];
         if (!Auth::attempt($credentials)) {
-
             return Session('danger', '账号或者密码错误');
         }
 
@@ -61,7 +60,7 @@ class StaticPagesController extends Controller
                 $value->update();
             }
         }
-        $votes = Vote::Orderby('created_at', 'desc')->paginate(10);
+        $votes = Vote::Orderby('created_at', 'desc')->paginate(6);
         return view('index', compact('votes'));
     }
 

@@ -11,10 +11,10 @@ use Cookie;
 
 class VoteController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth', ['except' => ['show', 'addScore','showToOther']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => [ 'addScore','showToOther']]);
+    }
 
     /**
      * 加载创建投票的编辑界面
@@ -147,7 +147,7 @@ class VoteController extends Controller
         // dd($message);
         if (empty($message) && strcmp($request->c_id, $message['cid']) != 0) {
             $userInfo = array('cid' => $request->c_id, 'uuid' => $request->c_id);
-            Cookie::queue('userInfo', $userInfo, 10);
+            Cookie::queue('userInfo', $userInfo, 5);
             $candidate = Candidate::where('c_id', $request->c_id)->first();
             $nowTime = date('Y-m-d H:i:s');
             $vote = $candidate->vote()->first();
