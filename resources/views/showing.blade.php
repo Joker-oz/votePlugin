@@ -22,19 +22,19 @@
             <span class="seg">|</span>
             <a href="{{ route('vote.edit')}}" class="top-nav-list">开始创建</a>
             <span class="seg">|</span>
-            <a href="./跳转票数直播.html" class="top-nav-list">票数直播</a>
+            <!-- <a href="./跳转票数直播.html" class="top-nav-list">票数直播</a>
             <a href="" class="top-nav-list exit">
                 退出
             </a>
             <span class="seg right">|</span>
             <a href="./用户登录界面.html" class="top-nav-list logIn">
                 登录
-            </a>
+            </a> -->
         </div>
     </div>
     <!--二维码区域-->
     <div class="QR-code">
-        <img class="QR-img" src="/myImg/QRImg.jpg" alt="二维码">
+        <img class="QR-img" src="{{$voteInfo['qr_link']}}" alt="二维码">
     </div>
 
 
@@ -45,8 +45,8 @@
             <span>/</span>
             <li>票数直播</li>
             <span>/</span>
-            <li>直播界面</li>
-            <li class="return"><a href="./用户登录界面.html"><button type="button" class="btn btn-danger">返回</button></a></li>
+            <!-- <li>直播界面</li> -->
+            <!-- <li class="return"><a href="./用户登录界面.html"><button type="button" class="btn btn-danger">返回</button></a></li> -->
         </ul>
 
         <!--画布区域-->

@@ -23,18 +23,20 @@ class VoteController extends Controller
      */
     public function index()
     {
-        return view('createVote');
+        $voteInfos = Vote::Orderby('created_at', 'desc')->take(10)->select(['id','title'])->get();
+        return view('createVote', compact('voteInfos'));
     }
 
-    /**
-     * 加载创建投票的编辑界面
-     * @method index
-     * @return [type] [description]
-     */
-    public function addThing()
-    {
-        return view('createVote');
-    }
+    // /**
+    //  * 加载创建投票的编辑界面
+    //  * @method index
+    //  * @return [type] [description]
+    //  */
+    // public function addThing()
+    // {
+    //     $voteInfos = Vote::all()->select(['id','title'])->get();
+    //     return view('createVote', compact('voteInfos'));
+    // }
 
     /**
      * 储存投票中的信息
@@ -44,7 +46,6 @@ class VoteController extends Controller
      */
     public function store(Request $request, ImageUploadHandler $uploader)
     {
-        // dd($request->all());
         $vote = new Vote();
         $vote->fill($request->all());
         $vote->save();
@@ -52,10 +53,13 @@ class VoteController extends Controller
         $vote->created_at = Carbon::now();
         $vote->updated_at = Carbon::now()->addMinutes($request->inputEndTime);
         $vote->save();
-        $num = 0;
+        $num = 1;
         while (true) {
             $string = 'file'.$num;
+
             if (isset($request->$string)) {
+                // dd($request->all());
+
                 $candidate = new Candidate();
                 $result = $uploader->save($request->$string, 'images', $vote->id);
                 if ($result) {
@@ -67,10 +71,12 @@ class VoteController extends Controller
                 $candidate->v_id =  $vote->id;
                 $candidate->save();
                 $num++;
+            // dd($candidate);
             } else {
                 break;
             }
         }
+        // dd($request);
 
         return redirect()->route('vote.show', $vote->id);
     }
@@ -109,6 +115,7 @@ class VoteController extends Controller
         $voteInfo['label'] = $meg['title'];
         $voteInfo['id'] = $meg['id'];
         $voteInfo['endTime'] = $meg['updated_at'];
+        $voteInfo['qr_link'] = $meg['qr_link'];
         return view('showing', compact('voteInfo'));
         // return $voteInfo;
     }

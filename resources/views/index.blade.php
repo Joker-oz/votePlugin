@@ -23,10 +23,10 @@
             <a href="{{ url('/index')}}" class="top-nav-list">首页</a>
             <span class="seg">|</span>
             <a href="{{ route('vote.edit')}}" class="top-nav-list">开始创建</a>
-        <form action="{{ route('logout')}}" method="POST" >
+        <form id="toExit" action="{{ route('logout')}}" method="POST" >
             {{csrf_field()}}
             {{method_field('DELETE')}}
-            <input type="submit" class="top-nav-list exit" name="" id="" value="退出"> 
+            <a href="javascript:;" id="exit" class="top-nav-list exit">退出</a> 
         </form>
             
             @if(!Auth::check())
@@ -68,14 +68,12 @@
                              
                             <td><a href="{{ route('vote.show',$vote->id) }}"><button type="button" class="btn btn-warning">点击查看</button></a></td>
                             </tr>
-                        @endforeach
-                        
+                        @endforeach             
                     </table>
-                    {{ $votes->links() }}
-                    
+                    {{ $votes->links() }}<!--分页 将数据库中的数据分多页进行存储,没有links则只能拿到一页的数据
+                    导致foreach循环遍历不完整-->
                 </div>
             </div>
-             <!--画布区域-->
         </div>
     </div>
 
@@ -88,13 +86,6 @@
             <h4>免费创建你的投票活动</h4>
             <i class="fa fa-css3 fa-2x" aria-hidden="true"></i>
             <i class="fa fa-html5 fa-2x" aria-hidden="true"></i>
-            <ul class="ending clearfix">
-                <li><a href="#">关于</a></li>
-                <span class="ft-seg">·</span>
-                <li><a href="#">联系我们</a></li>
-                <span class="ft-seg">·</span>
-                <li><a href="#">使用帮助与常见问题</a></li>
-            </ul>
         </div>
     </div>
     <!--页面足底部分结束-->
