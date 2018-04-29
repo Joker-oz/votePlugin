@@ -43,7 +43,7 @@
         </ul>
         <div id="main-wrapper">
             <div class="operate-bar-container clearfix">
-                <div id="vote-of-man-item" style="display:block;">
+                <div id="vote-of-man-item" style="display:none;">
                     <h2 class="strong">创建投票</h2>
                     <button class="btn btn-success vote-of-project" index="1">创建事物类投票</button>
                     <button class="btn btn-danger vote-of-man" index="1">创建人物类投票</button>
@@ -53,12 +53,12 @@
                         <div class="item-group top-one">
                             <label class="control-label" for="inputTitle" style="padding:5px 0px;">投票标题</label>
                             <div class="control">
-                            <input id="inputTitle" class="inputTitle" type="text" name="voteTitle" placeholder="请填入投票标题" required="required">
+                            <input id="inputTitle" class="inputTitle" type="text" name="title" placeholder="请填入投票标题" required="required">
                             </div>
                         </div>
                         <h3>活动介绍</h3>
                         <h5 style="font-weight: 400;margin:10px 0px;">请在下方输入本次投票活动的主题内容：</h5>
-                        <textarea id="act-content" class="txtarea" rows="15" cols="75" name="vote-theme" style="resize: none;font-size: 16px;margin-bottom: 20px;" required="required"></textarea>
+                        <textarea id="act-content" class="txtarea" rows="15" cols="75" name="body" style="resize: none;font-size: 16px;margin-bottom: 20px;" required="required"></textarea>
                         <h2 style="margin-top:20px;">创建候选人</h2>
                         <h3>基本候选人设置</h3>
                         <!--添加候选人开始-->
@@ -116,7 +116,7 @@
 
 
                 <!--事物类投票开始-->
-                <div id="vote-of-project-item" style="display:none;">
+                <div id="vote-of-project-item" style="display:block;">
                     <h2 class="strong">创建投票</h2>
                     <button class="btn btn-success vote-of-project" index="2">创建事物类投票</button>
                     <button class="btn btn-danger vote-of-man" index="2">创建人物类投票</button>
@@ -140,22 +140,22 @@
                     
                         <h3>活动介绍</h3>
                         <h5 style="font-weight: 400;margin:10px 0px;">请在下方输入本次投票活动的主题内容：</h5>
-                        <textarea id="act-content" class="txtarea" rows="15" cols="75" name="vote-theme" style="resize: none;font-size: 16px;margin-bottom: 20px;" required="required"></textarea>
+                        <textarea id="act-content" class="txtarea" rows="15" cols="75" name="body" style="resize: none;font-size: 16px;margin-bottom: 20px;" required="required"></textarea>
                         <h3>投票选项</h3>
                         <div class="choice-container">
                             <div class="options">
                                 <span class="add-num">1</span>
-                                <input class="inputOption" type="text" name="options_1" placeholder="请输入投票选项" required="required"><input id="another-file" type="file" name="file1" enctype="multipart/form-data"><button id="submitPic-of-pro" type="button" class="btn btn-warning pro-pic">上传相关图片</button><input disabled id="sc-show" type="text" class="pro-showfile">
+                                <input class="inputOption" type="text" name="c_name1" placeholder="请输入投票选项" required="required"><input id="another-file" type="file" name="file1" enctype="multipart/form-data"><button id="submitPic-of-pro" type="button" class="btn btn-warning pro-pic">上传相关图片</button><input disabled id="sc-show" type="text" class="pro-showfile">
                             </div>
                         </div>
                        
                         <button type="button" id="addOpt" class="btn btn-primary btn-control" style="margin-left:0px;">添加投票项</button>
                         <!--其它投票选项-->
-                        <div class="options">
+                        {{-- <div class="options">
                             <span class="add-num">其它</span>
                             <input id="xuantianBar" class="inputOption-else" type="text" name="options_else" placeholder="用于用户无满意选项时，可自定义输入内容">
-                            <span class="xuantian">(选填)</span>
-                        </div>
+                            <span class="xuantian">(选填)</span> --}}
+                        {{-- </div> --}}
 
                         <!--添加投票项结束-->
 
@@ -165,7 +165,7 @@
 
                         <div class="keeping-time-container pro-setTime">
                                 <div class="setTime">
-                                    <button type="button" class="btn btn-primary set-time">设置投票持续时间</button>
+                                    <button type="button" class="btn btn-danger set-time">设置投票持续时间</button>
                                     <div class="set-main clearfix">
                                         <input type="number" name="inputEndTime" class="setted" placeholder="持续时间/Min">
                                         <span class="time-icon"><i class="fa fa-clock-o fa-2x color" aria-hidden="true"></i></span>
