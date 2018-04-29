@@ -131,7 +131,7 @@ class VoteController extends Controller
         $voteInfo = Vote::where('id', $vId)->with('candidate')->first();
         //如果没有缓存的话，将候选数据填入缓存中。投票持续时间为缓存的生命时长
 
-        return view('mobel', compact('voteInfo'));
+        return view('voteInterface', compact('voteInfo'));
         // return $voteInfo;
     }
 
