@@ -14,33 +14,31 @@
        	<p class="myself text-adapt">{{$voteInfo->title}}</p>
     </div>
     <div class="items-container">
-    	<form id="user-vote" action="{{route('vote.addSore')}}" method="POST">
-        {{csrf_field()}}
-        @foreach($voteInfo->candidate as $key =>$item)
-          <div class="items clearfix">
-        		<div class="item-group">
-        			<div class="pic">
-        				<a href=""><img src="{{$item->c_img}}"></a>
-        			</div>
-        			<div class="no-and-name">
-        				<ul class="clearfix">
-        					<li><span>No.{{$key}}</span></li>
-        					<li class="c_name">{{$item->c_name}}</li>
-        				</ul>
-        			</div>
-        			<div class="click">
-        				<input class="radio" type="radio" name="c_id" value="{{$item->c_id}}">
-        			</div>
-        		</div>
-          @endforeach
-
-    		</div>
-    	</div>
-    	<div class="submit">
-    		<button id="submit" class="btn btn-danger">点击投票</button>
-    	</div>
-    </form>
+      	<form id="user-vote" action="{{route('vote.addSore')}}" method="POST">
+          {{csrf_field()}}
+          @foreach($voteInfo->candidate as $key =>$item)
+            <div class="items clearfix">
+          		<div class="item-group">
+          			<div class="pic">
+          				<a href=""><img src="{{$item->c_img}}"></a>
+          			</div>
+          			<div class="no-and-name">
+          				<ul class="clearfix">
+          					<li><span>No.{{$key}}</span></li>
+          					<li class="c_name">{{$item->c_name}}</li>
+          				</ul>
+          			</div>
+          			<div class="click">
+          				<input class="radio" type="radio" name="c_id" value="{{$item->c_id}}">
+          			</div>
+          		</div>
+      		  </div>
+            @endforeach
     </div>
+        	<div class="submit">
+        		<button id="submit" class="btn btn-danger">点击投票</button>
+        	</div>
+      </form>
     <div id="footer-container">
         <div class="footer">
             <h4>免费创建你的投票活动forFree</h4>
