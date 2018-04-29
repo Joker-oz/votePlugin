@@ -91,13 +91,22 @@ class VoteController extends Controller
      */
     public function show($vId)
     {
-        $voteInfo = Vote::where('id', $vId)->with('candidate')->first();
+        $meg = Vote::where('id', $vId)->with('candidate')->first();
         //如果没有缓存的话，将候选数据填入缓存中。投票持续时间为缓存的生命时长
-        \Cache::flush();
-        if (!\Cache::has('vote')) {
-            $voteInfo->candidateRedis($vId);
+        // \Cache::flush();
+        // if (!\Cache::has('vote')) {
+        //     $voteInfo->candidateRedis($vId);
+        // }
+        $data1 = [];
+        $data2 = [];
+        foreach ($meg->candidate as $key => $value) {
+            $data1[$key] = $value->c_name;
+            $data2[$key] = $value->c_score;
         }
-        return view('show', compact('voteInfo'));
+        $voteInfo = [];
+        $voteInfo['0'] = $data1;
+        $voteInfo['1'] = $data2;
+        return view('showing', compact('voteInfo'));
         // return $voteInfo;
     }
 

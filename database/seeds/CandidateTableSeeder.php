@@ -31,7 +31,7 @@ class CandidateTableSeeder extends Seeder
         $faker = app(Faker\Generator::class);
 
         $candidates = factory(Candidate::class)
-                        ->times(3)
+                        ->times(150)
                         ->make()
                         ->each(function ($candidate, $index) use ($vote_ids, $avatars,$faker) {
                             // 从用户 ID 数组中随机取出一个并赋值
