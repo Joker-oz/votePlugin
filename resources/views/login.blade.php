@@ -43,27 +43,27 @@
         -->
         <div class="logIn-box">
             <div class="logIn-header">
-                <h4>登录</h4>
+                <h4>LOGIN</h4>
             </div>
             <form id="form" action="{{ route('login.verify') }}" class="user-data" method="post">
                 {{ csrf_field() }}
                 <div class="input-box">
                     <span class="icon user-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
-                    <input type="text" name="username" placeholder="Please enter username">
+                    <input type="text" name="username" placeholder="用户名">
                 </div>
                 <div class="input-box">
                     <span class="icon passicon"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
-                    <input type="password" name="password" placeholder="Please enter your password">
+                    <input type="password" name="password" placeholder="密码">
                 </div>
                 
             </form>
             <div class="remember-box">
                 <label>
-                    <input type="checkbox" value="记住">&nbsp;Remember Me
+                    <input type="checkbox" value="是">&nbsp;记住密码
                 </label>
                 </div>
                 <div class="login-button-box">
-                    <button id="submit" type="submit">Login</button>
+                    <button id="submit" type="submit">点击登录</button>
                 </div>
         </div>
     </div>
@@ -74,13 +74,6 @@
             <h4 class="ft-str">免费创建你的投票活动</h4>
             <i class="fa fa-css3 fa-2x" aria-hidden="true"></i>
             <i class="fa fa-html5 fa-2x" aria-hidden="true"></i>
-            <ul class="ending clearfix">
-                <li><a href="">关于</a></li>
-                <span class="ft-seg">·</span>
-                <li><a href="">联系我们</a></li>
-                <span class="ft-seg">·</span>
-                <li><a href="">使用帮助与常见问题</a></li>
-            </ul>
         </div>
     </div>
 </body>

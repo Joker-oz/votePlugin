@@ -227,14 +227,15 @@ body{
     position: fixed;
     width: 100%;
     bottom: 0px;
-    border-top: 1px solid rgba(0,0,0,.4);
-    background-color:rgba(0, 0, 0,.1);
 }
 .footer-container{
     position: relative;
     width:100%;
     margin: 0px auto;
     text-align: center;
+}
+.footer-container h4{
+    font-family: '幼圆';
 }
 .ending{
     position: relative;

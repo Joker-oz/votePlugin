@@ -102,11 +102,11 @@
 </body>
 </html>
 
-[{
+{{-- [{
     label: "Dataset #1",
     backgroundColor: "rgba(255,99,132,0.2)",
     borderColor: "rgba(255,99,132,1)",
     borderWidth: 2,
     hoverBackgroundColor: "rgba(255,99,132,0.4)",
     hoverBorderColor: "rgba(255,99,132,1)",
-  }];
+  }]; --}}

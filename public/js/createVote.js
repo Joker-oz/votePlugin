@@ -102,17 +102,15 @@ $(document).ready(function(){
         var childrenTDCname = $('<td></td>');
         var TDCnameInner = $('<input>',{"id":"cname","class":"txtarea height","type":"text","name":"candidater-name_" + cderIndex,"placeholder":"请输入候选人姓名","required":"required"});
         childrenTDCname.append(TDCnameInner);
-        var childrenTDCinfo = $('<td></td>');
-        var TDCinfoInner = $('<input>',{"id":"cinfo","class":"txtarea height","type":"text","name":"candidater-info_" + cderIndex,"placeholder":"输入简介","required":"required"});
-        childrenTDCinfo.append(TDCinfoInner);
         var childrenTDCpic = $('<td></td>');
         var TDCpicInner = $('<input>',{"type":"file","name":"candidater-pic_" + cderIndex});
         var TDCpicInnerButton = $('<button></button>',{"type":"button","class":"btn btn-warning submit-pic"});
-        var TDCpicShowBar = $('<input>',{"type":"text","class":"showfile","disabled":"disabled"});
         TDCpicInnerButton.on('click',function(){
             TDCpicInner.click();
         });//点击事件转移，调用对应生成的文件域以此来提交图片信息
-
+        var childrenTDCfileShow = $('<td></td>');
+        var TDCfileShowBar = $('<input>',{"type":"text","class":"showfile","disabled":"disabled"});
+        childrenTDCfileShow.append(TDCfileShowBar);
         //提交文件后显示文件名
         TDCpicInner.on('change',function(){
             /*获取路径字符串*/
@@ -122,16 +120,16 @@ $(document).ready(function(){
                 console.log(arr);
                 var fileName = arr[arr.length-1];
                 console.log(fileName);
-                TDCpicShowBar.val(fileName);
+                TDCfileShowBar.val(fileName);
             }
             else{
-                TDCpicShowBar.val('');
+                TDCfileShowBar.val('');
                 alert("上传的文件类型有误,请上传.jpg或.png类型的图片");
             }
         });
         TDCpicInnerButton.html("上传本地照片");
-        childrenTDCpic.append(TDCpicInner,TDCpicInnerButton,TDCpicShowBar);
-        parentTR.append(childrenTDCname,childrenTDCinfo,childrenTDCpic);
+        childrenTDCpic.append(TDCpicInner,TDCpicInnerButton);
+        parentTR.append(childrenTDCname,childrenTDCpic,childrenTDCfileShow);
         $('#target-tb').append(parentTR);
     };
 
@@ -187,8 +185,12 @@ $(document).ready(function(){
         };
     }
 
-    //人物类投票活动起止日期选择
-   
+    // 用户退出
+    $(document).ready(function () {
+        $('#exit').click(function(){
+            $('#toExit').submit();
+        })
+    });
 
    
     

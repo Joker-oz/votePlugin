@@ -24,15 +24,11 @@
             <a href="{{ url('/index')}}" class="top-nav-list">首页</a>
             <span class="seg">|</span>
             <a href="{{ route('vote.edit')}}" class="top-nav-list">开始创建</a>
-            <span class="seg">|</span>
-            <a href="./跳转票数直播.html" class="top-nav-list">票数直播</a>
-            <a href="" class="top-nav-list exit">
-                退出
-            </a>
-            <span class="seg right">|</span>
-            <a href="./用户登录界面.html" class="top-nav-list logIn">
-                登录
-            </a>     
+            <form id="toExit" action="{{ route('logout')}}" method="POST" >
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
+                <a href="javascript:;" id="exit" class="top-nav-list exit">退出</a> 
+            </form>
         </div>
     </div>
     <!--头部导航结束-->
@@ -43,7 +39,7 @@
             <li><a href="{{ url('/index')}}" class="index">首页</a></li>
             <span>/</span>
             <li>创建投票</li>
-            <li class="return"><a href="./用户登录界面.html"><button type="button" class="btn btn-danger">返回</button></a></li>
+        <li class="return"><a href="{{ route('index')}}"><button type="button" class="btn btn-danger">返回</button></a></li>
         </ul>
         <div id="main-wrapper">
             <div class="operate-bar-container clearfix">
@@ -60,26 +56,6 @@
                             <input id="inputTitle" class="inputTitle" type="text" name="voteTitle" placeholder="请填入投票标题" required="required">
                             </div>
                         </div>
-                        {{-- <div class="item-group">
-                            <label class="control-label">投票类型</label>
-                            <div class="control">
-                                <input id="danxuan" class="voteType" type="radio" name="voteType" required="required" value="单选">
-                                <label class="radio" for="danxuan">单选</label>						
-                                <input style="margin-left:8px!important;" id="duoxuan" class="voteType" type="radio" name="voteType" required="required" value="多选">
-                                <label class="radio" for="duoxuan">多选</label>
-                            </div>
-                        </div> --}}
-                        {{-- <div class="item-group">
-                            <label class="control-label">投票隐私</label>
-                            <div class="control">
-                                <input class="privacy" id="anyone" type="radio" name="votePrivacy" value="任何人可查看和投票">
-                                <label class="radio" for="anyone">任何人可查看和投票</label>
-                            </div>
-                            <div class="control">
-                                <input class="privacy" id="needRight" type="radio" name="votePrivacy" value="凭密码查看和投票">
-                                <label class="radio" for="needRight">凭密码查看和投票</label>
-                            </div>
-                        </div> --}}
                         <h3>活动介绍</h3>
                         <h5 style="font-weight: 400;margin:10px 0px;">请在下方输入本次投票活动的主题内容：</h5>
                         <textarea id="act-content" class="txtarea" rows="15" cols="75" name="vote-theme" style="resize: none;font-size: 16px;margin-bottom: 20px;" required="required"></textarea>
@@ -98,19 +74,19 @@
                                 <table  id="target-tb" class="table table-hover table-striped table-bordered">
                                     <thead>
                                         <td>候选人姓名</td>
-                                        <td>个人简介</td>
                                         <td>上传个性照</td>
+                                        <td>文件名</td>
                                     </thead>
                                     <tr>
                                         <td>
                                             <input id="cname" class="txtarea height" type="text" name="c_name1" placeholder="请输入候选人姓名" required="required">
                                         </td>
                                         <td>
-                                            <input id="cinfo" class="txtarea height" type="text" name="c_sckech1" placeholder="输入简介" required="required">
+                                            <input id="file" type="file" name="file1" enctype="multipart/form-data">
+                                            <button id="submitPic" type="button" class="btn btn-warning submit-pic">上传本地图片</button>
                                         </td>
                                         <td>
-                                            <input id="file" type="file" name="file1" enctype="multipart/form-data">
-                                            <button id="submitPic" type="button" class="btn btn-warning submit-pic">上传本地图片</button><input disabled id="first-show" type="text" class="showfile">
+                                            <input disabled id="first-show" type="text" class="showfile">
                                         </td>
                                     </tr>
                                 </table>
@@ -152,7 +128,7 @@
                             <input id="inputTitle" class="inputTitle" type="text" name="title" placeholder="请填入投票标题" required="required">
                             </div>
                         </div>
-                        {{-- <div class="item-group">
+                         {{-- <div class="item-group">
                             <label class="control-label">投票类型</label>
                             <div class="control">
                                 <input id="dan" class="pro-voteType" type="radio" name="pro-voteType" required="required" value="单选">
@@ -161,7 +137,7 @@
                                 <label class="radio" for="duo">多选</label>
                             </div>
                         </div> --}}
-                        {{-- 1 --}}
+                    
                         <h3>活动介绍</h3>
                         <h5 style="font-weight: 400;margin:10px 0px;">请在下方输入本次投票活动的主题内容：</h5>
                         <textarea id="act-content" class="txtarea" rows="15" cols="75" name="vote-theme" style="resize: none;font-size: 16px;margin-bottom: 20px;" required="required"></textarea>
@@ -223,16 +199,16 @@
     </div>
     <div id="footer">
         <div class="footer-container">
-            <h4>免费创建你的投票活动</h4>
+            <h4>创建你的投票活动forFree</h4>
             <i class="fa fa-css3 fa-2x" aria-hidden="true"></i>
             <i class="fa fa-html5 fa-2x" aria-hidden="true"></i>
-            <ul class="ending clearfix">
+            {{-- <ul class="ending clearfix">
                 <li><a href="">关于</a></li>
                 <span class="ft-seg">·</span>
                 <li><a href="">联系我们</a></li>
                 <span class="ft-seg">·</span>
                 <li><a href="">使用帮助与常见问题</a></li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
     <script src="/js/jquery.js"></script>
