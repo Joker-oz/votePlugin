@@ -47,7 +47,7 @@ class StaticPagesController extends Controller
     }
 
     /**
-     * 登录后的首页
+     * 登录后的首页d
      * @method show
      * @return [type] [description]
      */

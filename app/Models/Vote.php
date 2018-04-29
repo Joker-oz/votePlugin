@@ -17,7 +17,7 @@ class Vote extends Model
      * @var array
      */
     protected $fillable = [
-      'title','object', 'status', 'qr_link', 'created_at', 'updated_at'
+      'title','object', 'status', 'qr_link', 'created_at', 'updated_at','body'
   ];
     public $timestamps = false;
     /**

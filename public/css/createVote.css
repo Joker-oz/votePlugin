@@ -373,9 +373,17 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
 input[type="file"]{
     display: none!important;
 }
+
 .showfile{
     padding: 4px 3px;
-    width: 100px;
+    width: 180px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.2);
+    margin-left: 15px;
+}
+.pro-showfile{
+    padding: 4px 3px;
+    width: 200px;
     border-radius: 4px;
     border: 1px solid rgba(0,0,0,.2);
     margin-left: 15px;
@@ -453,17 +461,7 @@ input[type="file"]{
 .fa-html5{
     color: #FF2D2D;
 }
-.deadLine-container{
-    margin-top: 40px;
-    width: 720px;
-    height: 100px;
-}
-.deadLine-container h3{
-    font-weight: bold;
-}
-.dateComponent{
-    margin-top: 20px;
-}
+
 #submit-of-project{
     margin-top: 40px;
 }
@@ -477,4 +475,44 @@ input[type="file"]{
     margin-top: 40px;
 }
 
+.pro-pic{
+    margin-left: 15px;
+}
 
+.keeping-time-container{
+    position: relative;
+    height: 150px;
+    width: 200px;
+}
+.set-time{
+    margin-top:10px;
+    margin-left: 0px;
+}
+.setted{
+    float: left;
+    margin-left: 30px;
+    width: 100px;
+    line-height: 20px;
+    padding: 6.5px 3px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.2);
+    outline: none;
+}
+.time-icon{
+    float: left;
+    margin-left:-130px;
+    display:inline-block;
+    padding: 2px 2px;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,.2);
+    background-color: powderblue;
+}
+.set-main{
+    margin-top: 20px;
+}
+.color{
+    color:#01B468;
+}
+.pro-setTime{
+    margin-top: 20px;
+}

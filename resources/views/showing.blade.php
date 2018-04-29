@@ -29,12 +29,12 @@
             <span class="seg right">|</span>
             <a href="./用户登录界面.html" class="top-nav-list logIn">
                 登录
-            </a>     
+            </a>
         </div>
     </div>
     <!--二维码区域-->
     <div class="QR-code">
-        <img class="QR-img" src="/myImg/二维码.jpg" alt="二维码">
+        <img class="QR-img" src="/myImg/QRImg.jpg" alt="二维码">
     </div>
 
 
@@ -73,6 +73,70 @@
     </div>-->
     <script src="/js/Chart.js"></script>
     <script src="/js/jquery.js"></script>
-    <script src="/js/showing.js"></script>
+    <script type="text/javascript"  runat = "server" >
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode($voteInfo['0']) ?>,
+                datasets: [{
+                    label: '{{$voteInfo['label']}}',
+                    data: <?php echo json_encode($voteInfo['1']) ?>,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255,99,132,1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+
+
+   var interval =  setInterval("longPolling()", 3000);
+   var times = "{{ $voteInfo['endTime'] }}";
+   function longPolling() {
+
+       $.ajax({
+         url: "/vote/{{$voteInfo['id']}}/send/score",
+         type:"get",
+         dataType: "json",
+         headers: {
+           'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+         },
+         timeout: 50000,//5秒超时，可自定义设置
+         error: function (XMLHttpRequest, textStatus, errorThrown) {
+           if (textStatus == "timeout") { // 请求超时
+             longPolling(); // 递归调用
+           } else { // 其他错误，如网络错误等
+             longPolling();
+           }
+         },
+         success: function (data, textStatus) {
+
+
+           voteInfo = data;
+           endTime = data[0].nowTime;
+            if ((new Date(endTime.replace(/-/g,"\/"))) > (new Date(times.replace(/-/g,"\/")))
+                  || data[0].status == 0) {
+              clearInterval(interval);
+            }
+           var da = [];
+           for(var i = 0; i < voteInfo.length; i++)
+           {
+             da.push(voteInfo[i].c_score);
+           }
+           myChart.data['datasets'][0]['data'] = da;
+           myChart.update();
+         }
+       });
+     }
+    </script>
 </body>
 </html>
