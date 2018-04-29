@@ -100,7 +100,7 @@ $(document).ready(function(){
         cderIndex++;
         var parentTR = $('<tr></tr>');
         var childrenTDCname = $('<td></td>');
-        var TDCnameInner = $('<input>',{"id":"cname","class":"txtarea height","type":"text","name":"c-name" + cderIndex,"placeholder":"请输入候选人姓名","required":"required"});
+        var TDCnameInner = $('<input>',{"id":"cname","class":"txtarea height","type":"text","name":"c_name" + cderIndex,"placeholder":"请输入候选人姓名","required":"required"});
         childrenTDCname.append(TDCnameInner);
         var childrenTDCpic = $('<td></td>');
         var TDCpicInner = $('<input>',{"type":"file","name":"file" + cderIndex});
