@@ -8,7 +8,7 @@ $(document).ready(function(){
         var parentDiv = $('<div></div>',{"class":"options"});
         var childrenSpan = $('<span></span>',{"class":"add-num"});
         childrenSpan.html(index);
-        var childrenInput = $('<input>',{"class":"inputOption","type":"text","name":"options_ "+index,"placeholder":"请输入投票选项","required":"required"});
+        var childrenInput = $('<input>',{"class":"inputOption","type":"text","name":"c_name"+index,"placeholder":"请输入投票选项","required":"required"});
         var childrenFlie = $('<input>',{"id":"another-file","type":"file","name":"file" + index,"enctype":"multipart/form-data"});
         var childrenBtn = $('<button></button>',{"type":"button","class":"btn btn-warning pro-pic"});
         childrenBtn.html("上传相关图片");
@@ -100,10 +100,10 @@ $(document).ready(function(){
         cderIndex++;
         var parentTR = $('<tr></tr>');
         var childrenTDCname = $('<td></td>');
-        var TDCnameInner = $('<input>',{"id":"cname","class":"txtarea height","type":"text","name":"candidater-name_" + cderIndex,"placeholder":"请输入候选人姓名","required":"required"});
+        var TDCnameInner = $('<input>',{"id":"cname","class":"txtarea height","type":"text","name":"c-name" + cderIndex,"placeholder":"请输入候选人姓名","required":"required"});
         childrenTDCname.append(TDCnameInner);
         var childrenTDCpic = $('<td></td>');
-        var TDCpicInner = $('<input>',{"type":"file","name":"candidater-pic_" + cderIndex});
+        var TDCpicInner = $('<input>',{"type":"file","name":"file" + cderIndex});
         var TDCpicInnerButton = $('<button></button>',{"type":"button","class":"btn btn-warning submit-pic"});
         TDCpicInnerButton.on('click',function(){
             TDCpicInner.click();

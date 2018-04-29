@@ -43,7 +43,7 @@
         </ul>
         <div id="main-wrapper">
             <div class="operate-bar-container clearfix">
-                <div id="vote-of-man-item" style="display:block;">
+                <div id="vote-of-man-item" style="display:none;">
                     <h2 class="strong">创建投票</h2>
                     <button class="btn btn-success vote-of-project" index="1">创建事物类投票</button>
                     <button class="btn btn-danger vote-of-man" index="1">创建人物类投票</button>
@@ -117,14 +117,14 @@
 
 
                 <!--事物类投票开始-->
-                <div id="vote-of-project-item" style="display:none;">
+                <div id="vote-of-project-item" style="display:block;">
                     <h2 class="strong">创建投票</h2>
                     <button class="btn btn-success vote-of-project" index="2">创建事物类投票</button>
                     <button class="btn btn-danger vote-of-man" index="2">创建人物类投票</button>
                     <h3>事物类投票基本设置</h3>
                     <form id="vote-data-of-project" method="post"action="{{route('vote.store')}}" enctype="multipart/form-data">
                       {{csrf_field()}}
-                      <input type="hidden" name="object" value="1">
+                      <input type="hidden" name="object" value="2">
                         <div class="item-group top-one">
                             <label class="control-label" for="inputTitle" style="padding:5px 0px;">投票标题</label>
                             <div class="control">
@@ -156,11 +156,11 @@
 
                         <button type="button" id="addOpt" class="btn btn-primary btn-control" style="margin-left:0px;">添加投票项</button>
                         <!--其它投票选项-->
-                        <div class="options">
+                        {{-- <div class="options">
                             <span class="add-num">其它</span>
                             <input id="xuantianBar" class="inputOption-else" type="text" name="options_else" placeholder="用于用户无满意选项时，可自定义输入内容">
-                            <span class="xuantian">(选填)</span>
-                        </div>
+                            <span class="xuantian">(选填)</span> --}}
+                        {{-- </div> --}}
 
                         <!--添加投票项结束-->
 
@@ -170,7 +170,7 @@
 
                         <div class="keeping-time-container pro-setTime">
                                 <div class="setTime">
-                                    <button type="button" class="btn btn-primary set-time">设置投票持续时间</button>
+                                    <button type="button" class="btn btn-danger set-time">设置投票持续时间</button>
                                     <div class="set-main clearfix">
                                         <input type="number" name="inputEndTime" class="setted" placeholder="持续时间/Min">
                                         <span class="time-icon"><i class="fa fa-clock-o fa-2x color" aria-hidden="true"></i></span>
