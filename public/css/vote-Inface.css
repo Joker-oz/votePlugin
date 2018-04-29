@@ -1,0 +1,172 @@
+html{
+    font-size: 20px;
+}
+/*媒体查询设置实现适配自适应*/
+@media only screen and (min-width: 401px){
+    html {
+        font-size: 25px !important;
+    }
+        .items .item-group:nth-child(3n){
+        margin-right: 0px;
+    }
+    .no-and-name ul{
+    font-size: 0.4rem;
+    padding-top: 5%;
+    padding-left: 5%;
+    text-align: center;
+    margin-bottom: 0px!important;   
+}
+}
+@media only screen and (min-width: 428px){
+    html {
+        font-size: 26.75px !important;
+    }
+    .items .item-group:nth-child(3n){
+        margin-right: 0px;
+    }
+    .no-and-name ul{
+    font-size: 0.4rem;
+    padding-top: 5%;
+    padding-left: 5%;
+    text-align: center;
+    margin-bottom: 0px!important;   
+}
+
+}
+@media only screen and (min-width: 481px){
+    html {
+        font-size: 30px !important; 
+    }
+    .items .item-group:nth-child(3n){
+        margin-right: 0px;
+    }
+}
+@media only screen and (min-width: 569px){
+    html {
+        font-size: 35px !important; 
+    }
+    .items .item-group:nth-child(3n){
+        margin-right: 0px;
+    }
+}
+@media only screen and (min-width: 641px){
+    html {
+        font-size: 40px !important; 
+    }
+    .items .item-group:nth-child(3n){
+        margin-right: 0px;
+    }
+}
+/*以下为页面样式*/
+.top-title-container{
+    width: 90vw;
+    margin: 0px auto;
+}
+.text-adapt{
+    font-size: 1rem!important;
+    text-align: center;
+}
+.myself{
+    color: white;
+    background-color: rgba(0,0,0,.8);
+}
+.items-container{
+    width: 90vw;
+    margin: 0px auto;
+    margin-top: 1rem;
+}
+.items{
+    padding-top: 1rem;
+    width: 90vw;
+    border-top: 1px solid rgba(0,0,0,.3);
+}
+.item-group{
+    float: left;
+    width: 25vw;
+    height: 30vh;
+    background-color: rgba(0,0,0,.1);
+    margin-right: 7.5vw;
+    margin-bottom: 5vh;
+}
+.pic{
+    height: 70%;
+    width: 80%;
+    margin:0px auto;
+    margin-top: 4%;
+}
+.pic a{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.pic a img{
+    display: block;
+    height:100%;
+    width:100%;
+}
+.no-and-name{
+    width: 85%;
+    height: 13%;
+    margin: 0px auto;
+}
+.no-and-name ul{
+    padding-top: 5%;
+    padding-left: 5%;
+    text-align: center;
+    margin-bottom: 0px!important;   
+}
+.no-and-name ul li{
+    font-weight: bold;
+    float: left;
+    list-style: none;
+    margin-right: 6%;
+
+}
+.click{
+    height: 10%;
+    margin: 0px auto;
+    width: 50%;
+}
+.c_name{
+    float: right!important;
+}
+
+.radio{
+    margin-left: 45%!important;
+    margin-bottom: 0px!important;
+}
+#footer-container{
+    background-color: rgba(0,0,0,.1);
+    margin-top: 10vh;
+}
+.footer{
+    position: relative;
+    padding-top: 2vh;
+    height: 10vh;
+    width: 90vw;
+    margin:0px auto;
+    text-align: center;
+}
+.footer h4{
+    margin: 0px auto;
+}
+.icon-container{
+    width: 20vw;
+    margin:0px auto;
+}
+.fa-css3{
+    color: blue;
+}
+.fa-html5{
+    color: red;
+}
+.submit{
+    display: block;
+    width: 90vw;
+    margin:0px auto;
+}
+#submit{
+    display: block!important;
+    margin: 0px auto;
+    margin-top: 5vh;
+}
