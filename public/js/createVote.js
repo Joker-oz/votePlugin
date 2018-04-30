@@ -3,6 +3,8 @@ $(document).ready(function(){
     var index = 1;//投票选项计数器
     var cderIndex = 1;//手动添加候选人监视变量
     var flag = 1;//反复隐藏与显示逻辑变量
+
+    //
     var addOption = function(){
         index++;
         var parentDiv = $('<div></div>',{"class":"options"});
@@ -23,6 +25,18 @@ $(document).ready(function(){
                 console.log(arr);
                 var fileName = arr[arr.length-1];
                 console.log(fileName);
+                var Sys = {};
+                var flag;
+                var filesize = 0;
+                filesize = this.files[0].size;
+                if(filesize / (1024 * 1024) < 2){
+                    flag = true;
+                }
+                else{
+                    childrenShowInput.val("");
+                    alert("图片大小请勿超过2MB！");
+                    return false;
+                }
                 childrenShowInput.val(fileName);
             }
             else{
@@ -69,9 +83,19 @@ $(document).ready(function(){
         var filepath = $(this).val();
         if(filepath.indexOf('jpg')!= -1 || filepath.indexOf('png')!= -1){
             var arr = filepath.split('\\');
-            console.log(arr);
             var fileName = arr[arr.length-1];
-            console.log(fileName);
+            var Sys = {};
+            var flag;
+            var filesize = 0;
+            filesize = this.files[0].size;
+            if(filesize / (1024 * 1024) < 2){
+                flag = true;
+            }
+            else{
+                $('#sc-show').val("");
+                alert("图片大小请勿超过2MB！");
+                return false;
+            }
             $('#sc-show').val(fileName);
         }else{
             $('#sc-show').val('');
@@ -88,7 +112,20 @@ $(document).ready(function(){
             console.log(arr);
             var fileName = arr[arr.length-1];
             console.log(fileName);
+            var Sys = {};
+            var flag;
+            var filesize = 0;
+            filesize = this.files[0].size;
+            if(filesize / (1024 * 1024) < 2){
+                flag = true;
+            }
+            else{
+                $('#first-show').val("");
+                alert("图片大小请勿超过2MB！");
+                return false;
+            }
             $('#first-show').val(fileName);
+
         }else{
             $('#first-show').val('');
             alert("上传的文件类型有误,请上传.jpg或.png类型的图片");
@@ -121,6 +158,18 @@ $(document).ready(function(){
                 var fileName = arr[arr.length-1];
                 console.log(fileName);
                 TDCfileShowBar.val(fileName);
+                //限制上传图片文件的大小
+                var filesize = 0;
+                filesize = this.files[0].size;
+                if(filesize / (1024 * 1024) < 2){
+
+                }
+                else{
+                    TDCfileShowBar.val('');
+                    alert("图片大小请勿超过2MB！");
+                    flag = false;
+                }
+
             }
             else{
                 TDCfileShowBar.val('');

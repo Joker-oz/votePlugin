@@ -45,6 +45,13 @@
             <span>/</span>
             <li>票数直播</li>
             <span>/</span>
+            <li class="right">
+                <form id="closes" action="" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <input type="text" name="status" style="display:none;" value="0">
+                    <button id="closeInterval" type="button" class="btn btn-danger">点击截止投票</button>
+                </form>
+            </li>
             <!-- <li>直播界面</li> -->
             <!-- <li class="return"><a href="./用户登录界面.html"><button type="button" class="btn btn-danger">返回</button></a></li> -->
         </ul>
@@ -53,27 +60,28 @@
         <div class="chart">
             <canvas id="myChart"></canvas>
         </div>
+
+         <!--页面底部-->
+        <div id="countDown" class="deadLine" style="display:block;">
+                <div class="showBar">
+                    <span class="tipTxt">距截止还剩:</span>
+                    <span class="mins Center"></span>
+                    <span class="txtcolor">&nbsp;:&nbsp;分</span>
+                    <span class="seconds Center"></span>
+                    <span class="txtcolor">&nbsp;:&nbsp;秒</span>
+                </div>
+            </div>
+            <div id="alertEnd" class="deadLine" style="display:none;">
+                    <div class="showBar">
+                        <span class="tipTxt ended">投票已截止</span>
+                    </div>
+                </div>
     </div>
 
-    <!--页面底部-->
-
-    <!--<div id="footer">
-        <div class="footer-container">
-            <h4>免费创建你的投票活动</h4>
-            <i class="fa fa-css3 fa-2x" aria-hidden="true"></i>
-            <i class="fa fa-html5 fa-2x" aria-hidden="true"></i>
-            <ul class="ending clearfix">
-                <li><a href="">关于</a></li>
-                <span class="ft-seg">·</span>
-                <li><a href="">联系我们</a></li>
-                <span class="ft-seg">·</span>
-                <li><a href="">使用帮助与常见问题</a></li>
-            </ul>
-        </div>
-    </div>-->
     <script src="/js/Chart.js"></script>
     <script src="/js/jquery.js"></script>
     <script type="text/javascript"  runat = "server" >
+    window.onload = function(){
         var ctx = document.getElementById("myChart");
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -99,10 +107,10 @@
         });
 
 
+
    var interval =  setInterval("longPolling()", 3000);
    var times = "{{ $voteInfo['endTime'] }}";
    function longPolling() {
-
        $.ajax({
          url: "/vote/{{$voteInfo['id']}}/send/score",
          type:"get",
@@ -136,7 +144,65 @@
            myChart.update();
          }
        });
-     }
+     };
+
+
+//倒计时函数 
+    var timer = null;
+     function countDown(){
+        var curTime = new Date();
+        var EndTime = new Date("{{ $voteInfo['endTime'] }}");
+        var leftTime = (EndTime.getTime() - curTime.getTime());
+        //console.log("毫秒数——leftTime = " + leftTime);
+        if(leftTime <=0){
+            $('#countDown').hide();
+            $('#alertEnd').show();
+            return false;
+        }//以下情况是距离结束还剩有效时间！
+        else{
+            var leftSeconds = Math.floor(leftTime / 1000);
+            //console.log("剩余秒数-leftSeconds = " + leftSeconds);
+            var leftMins = Math.floor(leftSeconds / 60);
+            //console.log("剩余分钟数-leftMins = " + leftMins);
+            var S = leftSeconds;//当分钟数剩余为0 而秒数还有60秒以内时用
+            var SS = leftSeconds;//当分钟数和秒数都有剩余时候用
+            timer = setInterval(function(){
+            if(leftMins == 0){
+                $('.mins').html(leftMins);
+                    if(S >= 0){
+                        $('.seconds').html(S);
+                        S -= 1;
+                    }
+                    else{
+                        $('#countDown').hide();
+                        $('#alertEnd').show();
+                        clearInterval(timer);
+                        return;
+                    };
+            }//第一种情况结束 分钟为0 秒数有剩余！
+                else{
+                    var newMins = Math.floor(SS / 60);
+                    console.log(SS);
+                    $('.mins').html(newMins);
+                    var newS = SS % 60;
+                    $('.seconds').html(newS);
+                    SS--; 
+                    SS == -1 && clearInterval(timer);
+                };
+            }/*定时器内执行的函数结束！*/,1000);//定时器结束！
+        }//else情况结束！
+    };
+        countDown();//启动倒计时！
+        $('#closeInterval').click(function(){
+            clearInterval(timer);
+            $('#closes').submit();
+        });
+
+
+
+
+
+};//onload函数结尾 整个JS文件结尾
     </script>
 </body>
 </html>

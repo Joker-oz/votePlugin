@@ -70,7 +70,6 @@
                                     </form>
                                 </td>
                             @endif
-
                             <td><a href="{{ route('vote.show',$vote->id) }}"><button type="button" class="btn btn-warning">点击查看</button></a></td>
                             </tr>
                         @endforeach
