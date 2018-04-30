@@ -63,7 +63,12 @@
                             @if( $vote->status == 0)
                                 <td>已结束</td>
                             @else
-                                <td>进行中</td>
+                                <td>进行中
+                                    <form class="X" method="POST" action="" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <input type="text" name="status" class="close" style="display:none;" value="1"><button class="btn btn-danger over">点击结束</button>
+                                    </form>
+                                </td>
                             @endif
                              
                             <td><a href="{{ route('vote.show',$vote->id) }}"><button type="button" class="btn btn-warning">点击查看</button></a></td>
