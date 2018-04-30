@@ -102,11 +102,11 @@ body{
     transition: all .2s;
 }
 .info{
-    width: 1200px;
-    margin: 0px auto;
+    width: 1000px;
     padding: 0px;
     list-style-type: none;
     background-color: #F0F0F0;
+    margin:0px auto;
     height: 50px;
     border-radius: 10px;
 }
@@ -171,9 +171,10 @@ body{
 }
 /*中心画布区域*/
 .chart{
-    width: 100%;
-    height: 800px;
+    width: 1000px;
+    height: 500px;
     text-align: center;
+    margin: 0px auto;
     margin-top: 0px;
 }
 
@@ -186,42 +187,37 @@ body{
     height: 150px;
     width: 150px;
 }
-
-/*页面底部样式表*/
-
-/*#footer{
-    position: fixed;
-    width: 100%;
-    bottom: 0px;
-    border-top: 1px solid rgba(0,0,0,.4);
-    background-color:rgba(0, 0, 0,.2);
+.right{
+    float: right!important;
+    margin-right: 30px;
 }
-.footer-container{
-    position: relative;
-    width:100%;
+.deadLine{
+    height: 80px;
+    width: 50%;
     margin: 0px auto;
+    font-size: 2rem;
+    font-weight: bold;
+   
+    text-align: left;
+}
+.showBar{
+    height: 80%;
+    width: 100%;
+    margin: auto 0px;
+}
+.showBar span{
+    display: inline-block!important;
+    width: 18%;
+    height: 80%;
+    vertical-align: middle;
+    margin-right:5px;
+}
+.seconds{
+    margin-right: 0px!important;
+}
+.Center{
     text-align: center;
+    color: red;
 }
-.ending{
-    position: relative;
-    width: 300px;
-    list-style-type: none;
-    padding: 0px;
-    left: 50%;
-    margin-left: -120px;
-    margin-bottom: 0px!important;
-}
-.ft-str{
-    color:white;
-}
-.ending li,span{
-    float: left;
-    margin-left: 5px;
-}
-.fa-css3{
-    color: #0080FF;
-}
-.fa-html5{
-    color: #FF2D2D;
-}
-*/
+
+

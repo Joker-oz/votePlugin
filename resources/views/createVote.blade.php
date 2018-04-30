@@ -7,7 +7,6 @@
     <title>Creat-Vote</title>
     <link rel="stylesheet" href="/css/createVote.css">
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/jquery-UI/jquery-ui.css">
     <!--Fontawesome Icon-->
     <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
@@ -148,10 +147,7 @@
                         <h3>投票选项</h3>
                         <div class="choice-container">
                             <div class="options">
-                                <span class="add-num">1</span>
-                                <input class="inputOption" type="text" name="c_name1" placeholder="请输入投票选项" required="required">
-                                <input id="another-file" type="file" name="file1">
-                                <button id="submitPic-of-pro" type="button" class="btn btn-warning pro-pic">上传相关图片</button><input disabled id="sc-show" type="text" class="pro-showfile">
+                                <span class="add-num">1</span><input class="inputOption" type="text" name="c_name1" placeholder="请输入投票选项" required="required"><input id="another-file" type="file" name="file1"><button id="submitPic-of-pro" type="button" class="btn btn-warning pro-pic">上传相关图片</button><input disabled id="sc-show" type="text" class="pro-showfile">
                             </div>
                         </div>
 
@@ -220,7 +216,6 @@
         </div>
     </div>
     <script src="/js/jquery.js"></script>
-    <script src="/css/jquery-UI/jquery-ui.js"></script>
     <script src="/css/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/createVote.js"></script>
 </body>

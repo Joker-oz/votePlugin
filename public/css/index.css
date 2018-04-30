@@ -148,7 +148,6 @@ body{
 .operate-bar-container{
 	height: auto;
     width: 1200px;
-    margin-left: 0px;
 }
 .clearfix::before{
 	content: "";
@@ -221,5 +220,11 @@ body{
 }
 .X{
     margin-left:30%;
+}
+thead tr td{
+    text-align: center;
+}
+tbody{
+    text-align: center;
 }
 
