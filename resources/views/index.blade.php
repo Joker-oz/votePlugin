@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
-<body>  
+<body>
     <!--头部导航开始-->
     <div id="top-Bar">
         <div class="top-nav-container clearfix">
@@ -26,16 +26,16 @@
         <form id="toExit" action="{{ route('logout')}}" method="POST" >
             {{csrf_field()}}
             {{method_field('DELETE')}}
-            <a href="javascript:;" id="exit" class="top-nav-list exit">退出</a> 
+            <a href="javascript:;" id="exit" class="top-nav-list exit">退出</a>
         </form>
-            
+
             @if(!Auth::check())
                 <span class="seg right">|</span>
                 <a href="{{ route('login')}}" class="top-nav-list logIn">
                     登录
                 </a>
             @endif
-           
+
         </div>
     </div>
     <!--头部导航结束-->
@@ -64,16 +64,16 @@
                                 <td>已结束</td>
                             @else
                                 <td>进行中
-                                    <form class="X" method="POST" action="" enctype="multipart/form-data">
+                                    <form class="X" method="POST" action="{{route('vote.end')}}" >
                                         {{ csrf_field() }}
-                                        <input type="text" name="status" class="close" style="display:none;" value="1"><button class="btn btn-danger over">点击结束</button>
+                                        <input type="text" name="vId" class="close" style="display:none;" value="{{$vote->id}}"><button class="btn btn-danger over">点击结束</button>
                                     </form>
                                 </td>
                             @endif
-                             
+
                             <td><a href="{{ route('vote.show',$vote->id) }}"><button type="button" class="btn btn-warning">点击查看</button></a></td>
                             </tr>
-                        @endforeach             
+                        @endforeach
                     </table>
                     {{ $votes->links() }}<!--分页 将数据库中的数据分多页进行存储,没有links则只能拿到一页的数据
                     导致foreach循环遍历不完整-->
