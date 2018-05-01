@@ -121,9 +121,9 @@
 
 
 
-   var interval =  setInterval("longPolling()", 3000);
+
    var times = "{{ $voteInfo['endTime'] }}";
-   function longPolling() {
+   window.longPolling =  function longPolling() {
        $.ajax({
          url: "/vote/{{$voteInfo['id']}}/send/score",
          type:"get",
@@ -159,21 +159,21 @@
        });
      };
 
-
-//倒计时函数 
+ var interval =  setInterval(window.longPolling, 3000);
+//倒计时函数
     var timer = null;
     function change(){
         clearInterval(timer);
         $('#dead').hide();
         $('#active').show();
-        
+
     }
      function countDown(){
         var curTime = new Date();
         var EndTime = new Date("2018-5-1 0:10:00");
         var leftTime = (EndTime.getTime() - curTime.getTime());
         //console.log("毫秒数——leftTime = " + leftTime);
-        console.log(leftTime);
+        // console.log(leftTime);
         if(leftTime <= 0){
             $('#dead').show();
             $('#active').hide();
@@ -204,7 +204,7 @@
                     $('.mins').html(newMins);
                     var newS = SS % 60;
                     $('.seconds').html(newS);
-                    SS--; 
+                    SS--;
                     SS == -1 && change();
                 };
             }/*定时器内执行的函数结束！*/,1000);//定时器结束！
