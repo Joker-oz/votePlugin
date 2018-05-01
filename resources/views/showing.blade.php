@@ -159,9 +159,14 @@
         var leftTime = (EndTime.getTime() - curTime.getTime());
         //console.log("毫秒数——leftTime = " + leftTime);
         // console.log(leftTime);
-        if(leftTime <= 0){
+        if("{{$voteInfo['status']}}" == 0){
+            clearInterval(timer);
             $('#dead').show();
             $('#active').hide();
+            return;
+        };
+        if(leftTime <= 0){
+            
         }//以下情况是距离结束还剩有效时间！
         else{
             var leftSeconds = Math.floor(leftTime / 1000);
