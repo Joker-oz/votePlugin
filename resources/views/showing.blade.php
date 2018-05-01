@@ -67,25 +67,10 @@
             <canvas id="myChart"></canvas>
         </div>
 
-         <!--页面底部-->
-         {{-- <div id="countDown" class="deadLine" style="display:block;">
-            <div class="showBar">
-                <span class="tipTxt">距截止还剩:</span>
-                <span class="mins Center"></span>
-                <span class="txtcolor">&nbsp;:&nbsp;分</span>
-                <span class="seconds Center"></span>
-                <span class="txtcolor">&nbsp;:&nbsp;秒</span>
-            </div>
-        </div> --}}
-        {{-- <div id="alertEnd" class="deadLine" style="display:none;">
-            <div class="showBar">
-                <span class="tipTxt ended">投票已截止</span>
-            </div>
-        </div> --}}
-        <form id="closes" action="" method="POST" enctype="multipart/form-data">
+    <form id="closes" action="{{route('vote.end')}}" method="POST">
             {{ csrf_field() }}
             <div class="wrapper">
-                <input type="text" name="status" style="display:none;" value="0">
+                <input type="text" name="vId" style="display:none;" value="{{$voteInfo['id']}}">
                 <button id="closeInterval" type="button" class="btn btn-danger">点击截止投票</button>
             </div>
         </form>
@@ -94,7 +79,7 @@
     <script src="/js/Chart.js"></script>
     <script src="/js/jquery.js"></script>
     <script type="text/javascript"  runat = "server" >
-    window.onload = function(){
+    window.onload = function(){0
         var ctx = document.getElementById("myChart");
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -170,7 +155,7 @@
     }
      function countDown(){
         var curTime = new Date();
-        var EndTime = new Date("2018-5-1 0:10:00");
+        var EndTime = new Date("{{ $voteInfo['endTime'] }}");
         var leftTime = (EndTime.getTime() - curTime.getTime());
         //console.log("毫秒数——leftTime = " + leftTime);
         // console.log(leftTime);
