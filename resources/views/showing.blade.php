@@ -163,6 +163,7 @@
             clearInterval(timer);
             $('#dead').show();
             $('#active').hide();
+            $('.wrapper').hide();
             return;
         };
         if(leftTime <= 0){
@@ -207,7 +208,7 @@
             $('#dead').show();
             $('#active').hide();
             $('#closes').submit();//提交功能
-            $(this).css("display","none!important");
+            $(this).css("display","none");
         });
 
 //隐藏二维码

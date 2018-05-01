@@ -20,7 +20,7 @@
             <div class="items clearfix">
           		<div class="item-group">
           			<div class="pic">
-          				<a href=""><img src="{{$item->c_img}}"></a>
+          				<a href="javascript:;"><img src="{{$item->c_img}}"></a>
           			</div>
           			<div class="no-and-name">
           				<ul class="clearfix">
@@ -39,7 +39,7 @@
       </form>
     <div id="footer-container">
         <div class="footer">
-            <h4>免费创建你的投票活动forFree</h4>
+            <h4>创建你的投票活动forFree</h4>
             <div class="icon-container">
 	            <i class="fa fa-css3" aria-hidden="true"></i>
 	            <i class="fa fa-html5" aria-hidden="true"></i>

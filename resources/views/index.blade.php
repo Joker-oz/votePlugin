@@ -87,7 +87,7 @@
     <!--页面足底部-->
     <div id="footer">
         <div class="footer-container">
-            <h4>免费创建你的投票活动forFree</h4>
+            <h4>创建你的投票活动ForFree</h4>
             <i class="fa fa-css3 fa-2x" aria-hidden="true"></i>
             <i class="fa fa-html5 fa-2x" aria-hidden="true"></i>
         </div>

@@ -224,7 +224,7 @@ body{
     margin: 0px auto;
 }
 #closeInterval{
-    display: block!important;
+    display: block;
     width: 150px!important;
     margin: 0px auto!important;
 }
