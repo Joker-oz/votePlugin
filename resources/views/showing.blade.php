@@ -34,7 +34,10 @@
     </div>
     <!--二维码区域-->
     <div class="QR-code">
-        <img class="QR-img" src="{{$voteInfo['qr_link']}}" alt="二维码">
+        <img id="QR" class="QR-img" src="{{$voteInfo['qr_link']}}" alt="二维码">
+    </div>
+    <div class="alert" style="display:none;">
+        请最大化浏览器查看隐藏的二维码
     </div>
 
 
@@ -45,12 +48,15 @@
             <span>/</span>
             <li>票数直播</li>
             <span>/</span>
-            <li class="right">
-                <form id="closes" action="" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <input type="text" name="status" style="display:none;" value="0">
-                    <button id="closeInterval" type="button" class="btn btn-danger">点击截止投票</button>
-                </form>
+            <li id="active" class="right status" style="display:block;">
+                <span class="tipTxt">距截止还剩:</span>
+                <span class="mins Center"></span>
+                <span class="txtcolor">&nbsp;&nbsp;分</span>
+                <span class="seconds Center"></span>
+                <span class="txtcolor">&nbsp;&nbsp;秒</span>
+            </li>
+            <li id="dead" class="right status" style="display:none;">
+                <span class="tipTxt">投票已截止</span>
             </li>
             <!-- <li>直播界面</li> -->
             <!-- <li class="return"><a href="./用户登录界面.html"><button type="button" class="btn btn-danger">返回</button></a></li> -->
@@ -62,20 +68,27 @@
         </div>
 
          <!--页面底部-->
-        <div id="countDown" class="deadLine" style="display:block;">
-                <div class="showBar">
-                    <span class="tipTxt">距截止还剩:</span>
-                    <span class="mins Center"></span>
-                    <span class="txtcolor">&nbsp;:&nbsp;分</span>
-                    <span class="seconds Center"></span>
-                    <span class="txtcolor">&nbsp;:&nbsp;秒</span>
-                </div>
+         {{-- <div id="countDown" class="deadLine" style="display:block;">
+            <div class="showBar">
+                <span class="tipTxt">距截止还剩:</span>
+                <span class="mins Center"></span>
+                <span class="txtcolor">&nbsp;:&nbsp;分</span>
+                <span class="seconds Center"></span>
+                <span class="txtcolor">&nbsp;:&nbsp;秒</span>
             </div>
-            <div id="alertEnd" class="deadLine" style="display:none;">
-                    <div class="showBar">
-                        <span class="tipTxt ended">投票已截止</span>
-                    </div>
-                </div>
+        </div> --}}
+        {{-- <div id="alertEnd" class="deadLine" style="display:none;">
+            <div class="showBar">
+                <span class="tipTxt ended">投票已截止</span>
+            </div>
+        </div> --}}
+        <form id="closes" action="" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="wrapper">
+                <input type="text" name="status" style="display:none;" value="0">
+                <button id="closeInterval" type="button" class="btn btn-danger">点击截止投票</button>
+            </div>
+        </form>
     </div>
 
     <script src="/js/Chart.js"></script>
@@ -149,15 +162,21 @@
 
 //倒计时函数 
     var timer = null;
+    function change(){
+        clearInterval(timer);
+        $('#dead').hide();
+        $('#active').show();
+        
+    }
      function countDown(){
         var curTime = new Date();
-        var EndTime = new Date("{{ $voteInfo['endTime'] }}");
+        var EndTime = new Date("2018-5-1 0:10:00");
         var leftTime = (EndTime.getTime() - curTime.getTime());
         //console.log("毫秒数——leftTime = " + leftTime);
-        if(leftTime <=0){
-            $('#countDown').hide();
-            $('#alertEnd').show();
-            return false;
+        console.log(leftTime);
+        if(leftTime <= 0){
+            $('#dead').show();
+            $('#active').hide();
         }//以下情况是距离结束还剩有效时间！
         else{
             var leftSeconds = Math.floor(leftTime / 1000);
@@ -174,31 +193,45 @@
                         S -= 1;
                     }
                     else{
-                        $('#countDown').hide();
-                        $('#alertEnd').show();
+                        $('#active').hide();
+                        $('#dead').show();
                         clearInterval(timer);
                         return;
                     };
             }//第一种情况结束 分钟为0 秒数有剩余！
                 else{
                     var newMins = Math.floor(SS / 60);
-                    console.log(SS);
                     $('.mins').html(newMins);
                     var newS = SS % 60;
                     $('.seconds').html(newS);
                     SS--; 
-                    SS == -1 && clearInterval(timer);
+                    SS == -1 && change();
                 };
             }/*定时器内执行的函数结束！*/,1000);//定时器结束！
         }//else情况结束！
     };
         countDown();//启动倒计时！
+
         $('#closeInterval').click(function(){
             clearInterval(timer);
-            $('#closes').submit();
+            $('#dead').show();
+            $('#active').hide();
+            $('#closes').submit();//提交功能
+            $(this).css("display","none!important");
         });
 
+//隐藏二维码
 
+window.onresize = function(){
+    if(window.innerWidth < 1500){
+        $('#QR').hide();
+        $('.alert').show();
+    }
+    else{
+        $('#QR').show();
+        $('.alert').hide();
+    }
+}
 
 
 
