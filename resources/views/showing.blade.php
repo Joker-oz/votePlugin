@@ -37,7 +37,7 @@
         <img id="QR" class="QR-img" src="{{$voteInfo['qr_link']}}" alt="二维码">
     </div>
     <div class="alert" style="display:none;">
-        请最大化浏览器查看隐藏的二维码
+        请最大化或缩小缩放比例查看二维码
     </div>
 
 
@@ -79,7 +79,7 @@
     <script src="/js/Chart.js"></script>
     <script src="/js/jquery.js"></script>
     <script type="text/javascript"  runat = "server" >
-    window.onload = function(){0
+    window.onload = function(){
         var ctx = document.getElementById("myChart");
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -214,7 +214,7 @@
 //隐藏二维码
 
 window.onresize = function(){
-    if(window.innerWidth < 1500){
+    if(window.innerWidth < 1100){
         $('#QR').hide();
         $('.alert').show();
     }
