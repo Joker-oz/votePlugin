@@ -116,6 +116,7 @@ class VoteController extends Controller
         $voteInfo['id'] = $meg['id'];
         $voteInfo['endTime'] = $meg['updated_at'];
         $voteInfo['qr_link'] = $meg['qr_link'];
+        $voteInfo['id'] = $meg['status'];
         return view('showing', compact('voteInfo'));
         // return $voteInfo;
     }
