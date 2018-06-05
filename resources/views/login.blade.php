@@ -29,7 +29,7 @@
             <span class="seg right">|</span>
             <a href="./用户登录界面.html" class="top-nav-list logIn">
                 登录
-            </a>     
+            </a>
         </div>
     </div>
     -->
@@ -53,9 +53,9 @@
                 </div>
                 <div class="input-box">
                     <span class="icon passicon"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
-                    <input type="password" name="password" placeholder="密码">
+                    <input type="password" name="password" ="密码">
                 </div>
-                
+
             </form>
             <div class="remember-box">
                 <label>
